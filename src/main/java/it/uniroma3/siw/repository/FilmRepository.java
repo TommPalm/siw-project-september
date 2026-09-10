@@ -9,4 +9,8 @@ public interface FilmRepository extends JpaRepository<Film, Long> {
 	Film findByTitle(String title);
 	List<Film> findByYear(int year);
 	List<Film> findByGenre(String genre);
+	
+	
+    @Query("SELECT DISTINCT f FROM Film f LEFT JOIN FETCH f.festivals")
+	List<Film> findAllWithFestival();
 }

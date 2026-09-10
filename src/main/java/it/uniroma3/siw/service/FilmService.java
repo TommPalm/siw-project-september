@@ -44,4 +44,8 @@ public class FilmService {
 	public List<Film> findByYear(int year){
 		return repo.findByYear(year);
 	}
+	@Transactional
+	public List<Film> findAllWithFestival(){
+		return repo.findAllWithFestival();
+	}
 }

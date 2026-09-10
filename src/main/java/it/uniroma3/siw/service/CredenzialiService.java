@@ -25,7 +25,9 @@ public class CredenzialiService {
 	
 	@Transactional
     public Credenziali saveCredentials(Credenziali credentials) {
-        credentials.setRole(Role.USER);
+		if(credentials.getRole()!="ADMIN" && credentials.getRole()!="USER") {
+			credentials.setRole("USER");
+		}
         credentials.setPassword(this.passwordEncoder.encode(credentials.getPassword()));
         return repo.save(credentials);
     }

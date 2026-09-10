@@ -2,12 +2,9 @@ package it.uniroma3.siw.service;
 
 import it.uniroma3.siw.repository.SalaRepository;
 import java.util.*;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import it.uniroma3.siw.model.*;
-import it.uniroma3.siw.repository.*;
 
 @Service
 public class SalaService {

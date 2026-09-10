@@ -27,7 +27,9 @@ public class ProiezioneService {
 	}
 	@Transactional
 	public Proiezione save(Proiezione pro) {
-		pro.setState(State.SCHEDULED);
+		if(pro.getState()!="SCHEDULED" && pro.getState()!="CANCELLED" && pro.getState()!="COMPLETED") {
+			pro.setState("SCHEDULED");
+		}
 		return repo.save(pro);
 	}
 	@Transactional
@@ -39,7 +41,7 @@ public class ProiezioneService {
 		return repo.findByDate(date);
 	}
 	@Transactional
-	public List<Proiezione> findScheduledByDate(LocalDate date){
-		return repo.findScheduledByDate(State.SCHEDULED, date);
+	public List<Proiezione> findScheduledByDate(String date){
+		return repo.findScheduledByDate("SCHEDULED", date);
 	}
 }

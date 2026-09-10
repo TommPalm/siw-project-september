@@ -29,7 +29,7 @@ public class RecensioneService {
 	}
 	@Transactional
 	public List<Recensione> findAllOrderByVote(){
-		return repo.findAllOrderByVote();
+		return repo.findAllByOrderByVote();
 	}
 	@Transactional
 	public List<Recensione> findByUser(Utente user){

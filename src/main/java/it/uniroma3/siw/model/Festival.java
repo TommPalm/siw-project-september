@@ -2,7 +2,6 @@ package it.uniroma3.siw.model;
 
 import java.util.*;
 import java.util.Objects;
-import java.time.*;
 
 import jakarta.persistence.*;
 
@@ -17,13 +16,13 @@ public class Festival {
 	@Column(nullable=false)
 	private String city;
 	@Column(nullable=false)
-	private String year;
+	private int year;
 	@Column(length=2000, nullable=true)
 	private String description;
 	@Column(nullable=false)
-	private LocalDate startDate;
+	private String startingDate;
 	@Column(nullable=false)
-	private LocalDate endDate;
+	private String endingDate;
 	
 	@OneToMany(mappedBy = "festival", cascade=CascadeType.ALL)
 	private List<Proiezione> projections;
@@ -48,10 +47,10 @@ public class Festival {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	public String getYear() {
+	public int getYear() {
 		return year;
 	}
-	public void setYear(String year) {
+	public void setYear(int year) {
 		this.year = year;
 	}
 	public String getDescription() {
@@ -60,17 +59,17 @@ public class Festival {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public LocalDate getStartDate() {
-		return startDate;
+	public String getStartingDate() {
+		return startingDate;
 	}
-	public void setStartDate(LocalDate startDate) {
-		this.startDate = startDate;
+	public void setStartingDate(String startingDate) {
+		this.startingDate = startingDate;
 	}
-	public LocalDate getEndDate() {
-		return endDate;
+	public String getEndingDate() {
+		return endingDate;
 	}
-	public void setEndDate(LocalDate endDate) {
-		this.endDate = endDate;
+	public void setEndingDate(String endingDate) {
+		this.endingDate = endingDate;
 	}
 	public List<Proiezione> getProjections() {
 		return projections;

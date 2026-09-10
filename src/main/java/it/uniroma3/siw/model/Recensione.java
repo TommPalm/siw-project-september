@@ -2,7 +2,6 @@ package it.uniroma3.siw.model;
 
 import java.util.*;
 import jakarta.persistence.*;
-import java.time.*;
 
 @Entity
 public class Recensione {
@@ -13,13 +12,28 @@ public class Recensione {
 	@Column(length=2000)
 	private String text;
 	private int vote;
-	private LocalDate date;
+	private String date;
 	
 	@ManyToOne
 	private Utente user;
+	@ManyToOne
+	private Film film;
+	
+	public Recensione(Long id) {
+		this.id = id;
+	}
 
 	public Long getId() {
 		return id;
+	}
+
+	
+	public Film getFilm() {
+		return film;
+	}
+
+	public void setFilm(Film film) {
+		this.film = film;
 	}
 
 	public void setId(Long id) {
@@ -42,11 +56,11 @@ public class Recensione {
 		this.vote = vote;
 	}
 
-	public LocalDate getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(LocalDate date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 

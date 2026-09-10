@@ -1,6 +1,5 @@
 package it.uniroma3.siw.model;
 
-import java.time.*;
 import java.util.Objects;
 import jakarta.persistence.*;
 
@@ -11,11 +10,10 @@ public class Proiezione {
 	@GeneratedValue(strategy =GenerationType.AUTO)
 	private Long id;
 	@Column(nullable=false)
-	private LocalDate date;
+	private String date;
 	@Column(nullable=false)
 	private String time;
-	@Enumerated(EnumType.STRING)
-	private State state; //cancelled, completed, scheduled
+	private String state; //cancelled, completed, scheduled
 	
 	@ManyToOne
 	private Festival festival;
@@ -29,10 +27,10 @@ public class Proiezione {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public LocalDate getDate() {
+	public String getDate() {
 		return date;
 	}
-	public void setDate(LocalDate date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 	public String getTime() {
@@ -41,10 +39,10 @@ public class Proiezione {
 	public void setTime(String time) {
 		this.time = time;
 	}
-	public State getState() {
+	public String getState() {
 		return state;
 	}
-	public void setState(State state) {
+	public void setState(String state) {
 		this.state = state;
 	}
 	public Festival getFestival() {

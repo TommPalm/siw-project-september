@@ -33,12 +33,8 @@ public class FestivalService {
 		return repo.findByName(name);
 	}
 	@Transactional
-	public List<Festival> findAllWithProjections(){
-		return repo.findAllWithProjections();
-	}
-	@Transactional
 	public List<Festival> findByCityAndYearOrderByStartDateEndDate(String city, int year){
-		return repo.findByCityAndYearOrderByStartDateEndDate(city, year);
+		return repo.findByCityAndYearOrderByStartingDate(city, year);
 	}
 	
 }

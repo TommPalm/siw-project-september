@@ -18,10 +18,16 @@ public class Film {
 	@OneToMany(mappedBy = "film", cascade = CascadeType.ALL)
 	private List<Proiezione> projections;
 	@ManyToMany
+	@JoinTable(
+	    name = "film_festival",
+	    joinColumns = @JoinColumn(name = "film_id"),
+	    inverseJoinColumns = @JoinColumn(name = "festival_id")
+	)
 	private List<Festival> festivals;
+
 	@ManyToOne
 	private Regista director;
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="film")
 	private List<Recensione> reviews;
 	public Long getId() {
 		return id;

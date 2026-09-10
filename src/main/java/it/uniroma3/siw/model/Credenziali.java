@@ -3,6 +3,7 @@ package it.uniroma3.siw.model;
 import java.util.Objects;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Credenziali {
@@ -10,13 +11,23 @@ public class Credenziali {
 	@Id
 	@GeneratedValue(strategy =GenerationType.AUTO)
 	private Long id;
+	@NotBlank
 	private String password;
+	@NotBlank
 	@Column(unique=true)
 	private String username;
-	@Enumerated(EnumType.STRING)
-	private Role role;
+	private String role; // ADMIN, USER
+
+	@OneToOne(cascade = CascadeType.ALL)
+	private Utente user;
 	
 	
+	public Utente getUser() {
+		return user;
+	}
+	public void setUser(Utente user) {
+		this.user = user;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -35,10 +46,10 @@ public class Credenziali {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public Role getRole() {
+	public String getRole() {
 		return role;
 	}
-	public void setRole(Role role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 	@Override

@@ -16,6 +16,6 @@ public interface ProiezioneRepository extends JpaRepository<Proiezione, Long> {
             "SELECT p FROM Proiezione p " +
             "WHERE p.state = :state " +
                 "AND p.date = :date " )
-	List<Proiezione> findScheduledByDate(@Param("state") State state,
-										@Param("date") LocalDate date);
+	List<Proiezione> findScheduledByDate(@Param("state") String state,
+										@Param("date") String date);
 }

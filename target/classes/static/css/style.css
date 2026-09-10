@@ -1,0 +1,43 @@
+.titolo{
+	position: relative;
+	display: inline-block;
+}
+
+#nome{
+	position:absolute;
+	border: solid black;
+	top: 55%;
+	right: 55%;
+	background-color: antiquewhite;
+	font-size: 40px;
+}
+
+#sfondo {
+display: block;
+width: 1400px;
+height: 280px;
+opacity: 80%;
+border: solid black;
+}
+
+#login{
+position: absolute;
+font-size: 18px;
+top: 10%;
+left: 85%;
+border: solid red;
+background-color: white;
+border-radius: 80px;
+padding: 5px;
+}
+
+#register{
+position: absolute;
+font-size: 18px;
+top: 10%;
+left: 90%;
+border: solid red;
+background-color: white;
+border-radius: 80px;
+padding: 5px;
+}

@@ -1,6 +1,6 @@
 package it.uniroma3.siw.model;
 
-import java.time.*;
+
 import jakarta.persistence.*;
 import java.util.*;
 
@@ -13,7 +13,7 @@ public class Regista {
 	private String name;
 	private String surname;
 	private String country;
-	private LocalDate birth;
+	private String birth;
 	
 	@OneToMany(mappedBy="director")
 	private List<Film> films;
@@ -50,11 +50,11 @@ public class Regista {
 		this.country = country;
 	}
 
-	public LocalDate getBirth() {
+	public String getBirth() {
 		return birth;
 	}
 
-	public void setBirth(LocalDate birth) {
+	public void setBirth(String birth) {
 		this.birth = birth;
 	}
 
