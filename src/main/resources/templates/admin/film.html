@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="it"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>Modifica Film</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+
+<body>
+
+<div class="admin-page">
+
+    <div class="admin-header">
+        <h1>🎬 Modifica film</h1>
+        <p>Modifica le informazioni del film e i festival a cui partecipa</p>
+    </div>
+
+    <form class="admin-form"
+          th:action="@{/film/mod}"
+          th:object="${film}"
+          method="POST">
+
+        <input type="hidden" th:field="*{id}">
+
+        <div class="admin-form-group">
+            <label for="title">Titolo</label>
+
+            <input
+                id="title"
+                class="admin-input"
+                type="text"
+                required
+                th:field="*{title}"
+                placeholder="Titolo del film"
+            />
+        </div>
+
+        <div class="admin-form-group">
+            <label for="genre">Genere</label>
+
+            <input
+                id="genre"
+                class="admin-input"
+                type="text"
+                required
+                th:field="*{genre}"
+                placeholder="Genere"
+            />
+        </div>
+
+        <div class="admin-form-group">
+            <label for="length">Durata</label>
+
+            <input
+                id="length"
+                class="admin-input"
+                type="text"
+                required
+                th:field="*{length}"
+                placeholder="es. 01:45"
+            />
+        </div>
+
+        <div class="admin-form-group">
+            <label for="year">Anno</label>
+
+            <input
+                id="year"
+                class="admin-input"
+                type="number"
+                required
+                th:field="*{year}"
+                placeholder="Anno"
+            />
+        </div>
+
+        <div class="admin-form-group">
+            <label for="country">Paese</label>
+
+            <input
+                id="country"
+                class="admin-input"
+                type="text"
+                required
+                th:field="*{country}"
+                placeholder="Paese di produzione"
+            />
+        </div>
+
+
+        <!-- FESTIVALS -->
+
+        <div class="admin-form-group">
+
+            <label>Festival</label>
+
+            <div class="festival-selection">
+
+                <div class="festival-selection-title">
+                    🎟️ Festival a cui partecipa il film
+                </div>
+
+                <p class="festival-selection-help">
+                    Puoi selezionare uno o più festival.
+                </p>
+
+                <div th:each="festival : ${festivals}"
+                     class="festival-checkbox">
+
+                    <input
+                        type="checkbox"
+                        th:field="*{festivals}"
+                        th:value="${festival.id}"
+                        th:id="'festival-' + ${festival.id}"
+                    />
+
+                    <label
+                        th:for="'festival-' + ${festival.id}"
+                        th:text="${festival.name}">
+                    </label>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <button type="submit" class="admin-submit">
+            Salva modifiche
+        </button>
+
+    </form>
+
+    <a class="admin-back" th:href="@{/admin/gestione}">
+        ← Torna alla gestione
+    </a>
+
+</div>
+
+</body>
+</html>

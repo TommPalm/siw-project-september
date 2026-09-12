@@ -16,14 +16,19 @@ public class RegistaService {
 	}
 	
 	@Transactional
+	public void delete(Regista r) {
+		repo.delete(r);
+	}
+	
+	@Transactional(readOnly=true)
 	public Regista findBySurname(String surname) {
 		return repo.findBySurname(surname);
 	}
-	@Transactional
-	public Optional<Regista> findById(Long id){
-		return repo.findById(id);
+	@Transactional(readOnly=true)
+	public Regista findById(Long id){
+		return repo.findById(id).orElse(null);
 	}
-	@Transactional
+	@Transactional(readOnly=true)
 	public List<Regista> findAll(){
 		return repo.findAll();
 	}

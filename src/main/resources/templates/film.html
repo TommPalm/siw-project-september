@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="it"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title th:text="${film.title}">Film</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+
+<body class="film-page">
+
+    <!-- =========================
+         FILM HERO
+         ========================= -->
+
+    <header class="film-hero">
+
+        <img class="film-hero-image"
+             th:src="@{/images/film.jpg}"
+             alt="Film">
+
+        <div class="film-hero-overlay"></div>
+
+        <div class="film-hero-content">
+
+            <h1 class="film-hero-title"
+                th:text="${film.title}">
+                Titolo del film
+            </h1>
+
+            <div class="film-hero-subtitle">
+
+                <span th:text="${film.year}"></span>
+
+                <span class="separator">•</span>
+
+                <span th:text="${film.genre}"></span>
+
+                <span class="separator">•</span>
+
+                <span th:text="${film.country}"></span>
+
+                <span class="separator">•</span>
+
+                <span th:text="${film.length}"></span>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <main class="film-content">
+
+        <!-- =========================
+             FILM INFORMATION
+             ========================= -->
+
+        <section class="film-info-card">
+
+            <div class="film-info-main">
+
+                <h2 class="film-info-heading">
+                    Informazioni sul film
+                </h2>
+
+                <div class="film-meta">
+
+                    <span class="film-meta-item"
+                          th:text="${film.year}">
+                    </span>
+
+                    <span class="film-meta-item"
+                          th:text="${film.genre}">
+                    </span>
+
+                    <span class="film-meta-item"
+                          th:text="${film.country}">
+                    </span>
+
+                    <span class="film-meta-item"
+                          th:text="${film.length}">
+                    </span>
+
+                </div>
+
+
+                <div class="film-director-box">
+
+                    <div class="director-icon">
+                        🎬
+                    </div>
+
+                    <div class="director-info">
+
+                        <span class="director-label">
+                            REGISTA
+                        </span>
+
+                        <span class="director-name">
+
+                            <span th:text="${film.director.name}">
+                            </span>
+
+                            <span th:text="${film.director.surname}">
+                            </span>
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <a class="director-link"
+               th:href="@{/regista/{id}/info(id=${film.director.id})}">
+
+                Scheda regista →
+
+            </a>
+
+        </section>
+
+
+        <!-- =========================
+             REVIEWS
+             ========================= -->
+
+        <section class="reviews-section">
+
+            <h2 class="section-title">
+                RECENSIONI
+            </h2>
+
+
+            <p class="empty-message"
+               th:if="${#lists.isEmpty(reviews)}">
+
+                Non ci sono ancora recensioni per questo film.
+
+            </p>
+
+
+            <div class="review-list"
+                 th:if="${not #lists.isEmpty(reviews)}">
+
+                <article class="review-card"
+                         th:each="rev : ${reviews}">
+
+                    <div class="review-header">
+
+                        <span class="review-date"
+                              th:text="${rev.date}">
+                        </span>
+
+                        <span class="review-vote">
+
+                            ⭐
+                            <span th:text="${rev.vote}">
+                            </span>
+                            /5
+
+                        </span>
+
+                    </div>
+
+                    <p class="review-text"
+                       th:text="${rev.text}">
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PROJECTIONS
+             ========================= -->
+
+        <section class="film-projections">
+
+            <h2 class="section-title">
+                PROIEZIONI
+            </h2>
+
+
+            <p class="empty-message"
+               th:if="${#lists.isEmpty(proiezioni)}">
+
+                Non ci sono proiezioni in programma.
+
+            </p>
+
+
+            <div class="projection-list"
+                 th:if="${not #lists.isEmpty(proiezioni)}">
+
+                <div class="projection-card"
+                     th:each="pro : ${proiezioni}">
+
+
+                    <div class="projection-main">
+
+                        <span class="film-projection-festival">
+                            FESTIVAL
+                        </span>
+
+                        <div class="projection-film"
+                             th:text="${pro.festival.name}">
+                        </div>
+
+
+                        <div class="projection-datetime">
+
+                            <span class="projection-date"
+                                  th:text="${pro.date}">
+                            </span>
+
+                            <span class="projection-separator">
+                                •
+                            </span>
+
+                            <span class="projection-time"
+                                  th:text="${pro.time}">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="projection-room">
+
+                        <span class="room-label">
+                            SALA
+                        </span>
+
+                        <span class="room-name"
+                              th:text="${pro.room.name}">
+                        </span>
+
+                        <span class="room-address"
+                              th:text="${pro.room.address}">
+                        </span>
+
+                    </div>
+
+
+                    <span class="projection-state"
+                          th:classappend="' state-' + ${#strings.toLowerCase(pro.state)}"
+                          th:text="${pro.state}">
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

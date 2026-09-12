@@ -2,35 +2,142 @@
 <html lang="it"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-	<head>
-		<title>Home</title>
-		<link rel="stylesheet" th:href="@{/css/style.css}"/>
-	</head>
-	<body>
-		<div class="titolo">
-			<img id="sfondo" th:src="@{/images/cinema.jpg}" />
-			<strong id="nome">🎬FESTIVAL DEL CINEMA🍿</strong>
-			<a id="login" th:href="@{/login}">Accedi</a>
-			<a id="register" th:href="@{/register}">Registrati</a>
-		</div>
-		
-		<p th:if="${#lists.isEmpty(festivals)}">Spiacenti, non ci sono festivals</p>
-		
-		<ul>
-			<li th:each="festival : ${festivals}">
-				<span th:text="${festival.name}"></span>
-				<div>
-					<h1> dal </h1>
-					<span th:text="${festival.startingDate}"></span>
-					<h1> al </h1>
-					<span th:text="${festival.endingDate}"></span>
-					<span th:text="${festival.year}"></span>
-					<h1> a </h1>
-					<span th:text="${festival.city}"></span>
-				</div>
-				<span th:text="${festival.description}"></span>
-				<a th:href="@{/festival/{id}/info(id=${festival.id})}">scopri di più</a>
-			</li>
-		</ul>
-	</body>
+
+<head>
+    <title>Home - Festival del Cinema</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+
+<body>
+
+    <!-- HERO -->
+    <header class="home-hero">
+
+        <img class="home-background"
+             th:src="@{/images/cinema.jpg}"
+             alt="Cinema">
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+            <div class="hero-title">
+                🎬 FESTIVAL DEL CINEMA 🍿
+            </div>
+
+            <p class="hero-subtitle">
+                Scopri i festival, i film e le prossime proiezioni
+            </p>
+        </div>
+
+        <div class="hero-buttons">
+            <a class="login-button" th:href="@{/login}">
+                Accedi
+            </a>
+
+            <a class="register-button" th:href="@{/register}">
+                Registrati
+            </a>
+        </div>
+
+    </header>
+
+
+    <!-- FESTIVALS -->
+    <main class="home-content">
+
+        <div class="festival-heading">
+            <h1>I nostri festival</h1>
+            <p>Scopri gli eventi cinematografici e trova il prossimo film da vedere.</p>
+        </div>
+
+
+        <!-- EMPTY -->
+        <div class="empty-festivals"
+             th:if="${#lists.isEmpty(festivals)}">
+
+            <span>🎬</span>
+            <p>Spiacenti, non ci sono festival disponibili.</p>
+
+        </div>
+
+
+        <!-- FESTIVAL CARDS -->
+        <div class="festival-grid"
+             th:if="${not #lists.isEmpty(festivals)}">
+
+            <article class="festival-card"
+                     th:each="festival : ${festivals}">
+
+                <div class="festival-card-header">
+
+                    <span class="festival-year"
+                          th:text="${festival.year}">
+                    </span>
+
+                    <h2 th:text="${festival.name}">
+                    </h2>
+
+                </div>
+
+
+                <div class="festival-card-body">
+
+                    <!-- DATE -->
+                    <div class="festival-info">
+
+                        <span class="info-icon">📅</span>
+
+                        <div>
+                            <span class="info-label">DATE</span>
+
+                            <span class="info-value">
+                                <span th:text="${festival.startingDate}"></span>
+                                <span> → </span>
+                                <span th:text="${festival.endingDate}"></span>
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- CITY -->
+                    <div class="festival-info">
+
+                        <span class="info-icon">📍</span>
+
+                        <div>
+                            <span class="info-label">LUOGO</span>
+
+                            <span class="info-value"
+                                  th:text="${festival.city}">
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- DESCRIPTION -->
+                    <p class="festival-description"
+                       th:text="${festival.description}">
+                    </p>
+
+
+                    <!-- BUTTON -->
+                    <a class="festival-button"
+                       th:href="@{/festival/{id}/info(id=${festival.id})}">
+
+                        Scopri il festival
+                        <span>→</span>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </main>
+
+</body>
 </html>

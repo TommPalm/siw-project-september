@@ -18,25 +18,29 @@ public class CredenzialiService {
 		this.repo = repo;
 	}
 	
-	@Transactional
+	@Transactional(readOnly=true)
 	public Credenziali findById(Long id) {
 		return repo.findById(id).orElse(null);
 	}
 	
 	@Transactional
     public Credenziali saveCredentials(Credenziali credentials) {
-		if(credentials.getRole()!="ADMIN" && credentials.getRole()!="USER") {
+		if(credentials.getRole()!="ADMIN") {
 			credentials.setRole("USER");
 		}
         credentials.setPassword(this.passwordEncoder.encode(credentials.getPassword()));
         return repo.save(credentials);
     }
-	@Transactional
+	@Transactional(readOnly=true)
 	public List<Credenziali> findAll(){
 		return repo.findAll();
 	}
-	@Transactional
+	@Transactional(readOnly=true)
 	public Credenziali findByUsername(String username){
 		return repo.findByUsername(username);
+	}
+	@Transactional(readOnly=true)
+	public boolean existsByUsername(String username) {
+		return repo.existsByUsername(username);
 	}
 }

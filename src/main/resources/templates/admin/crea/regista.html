@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="it"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>Crea regista - Festival del Cinema</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+
+<body>
+
+<main class="admin-page">
+
+    <header class="admin-header">
+
+        <div class="admin-icon">
+            🎬
+        </div>
+
+        <h1>Nuovo regista</h1>
+
+        <p>
+            Aggiungi un nuovo regista al catalogo cinematografico.
+        </p>
+
+    </header>
+
+
+    <section class="admin-form-card">
+
+        <form class="admin-form"
+              th:action="@{/regista/crea}"
+              th:object="${regista}"
+              method="POST">
+
+            <div class="admin-form-group">
+
+                <label for="name">
+                    Nome
+                </label>
+
+                <input
+                    id="name"
+                    class="admin-input"
+                    type="text"
+                    required
+                    th:field="*{name}"
+                    placeholder="Nome del regista"
+                />
+
+            </div>
+
+
+            <div class="admin-form-group">
+
+                <label for="surname">
+                    Cognome
+                </label>
+
+                <input
+                    id="surname"
+                    class="admin-input"
+                    type="text"
+                    required
+                    th:field="*{surname}"
+                    placeholder="Cognome del regista"
+                />
+
+            </div>
+
+
+            <div class="admin-form-group">
+
+                <label for="country">
+                    Paese
+                </label>
+
+                <input
+                    id="country"
+                    class="admin-input"
+                    type="text"
+                    required
+                    th:field="*{country}"
+                    placeholder="Paese di origine"
+                />
+
+            </div>
+
+
+            <div class="admin-form-group">
+
+                <label for="birth">
+                    Data di nascita
+                </label>
+
+                <input
+                    id="birth"
+                    class="admin-input"
+                    type="text"
+                    required
+                    th:field="*{birth}"
+                    placeholder="Es. 12 marzo 1975"
+                />
+
+            </div>
+
+
+            <div class="admin-form-actions">
+
+                <button
+                    type="submit"
+                    class="admin-submit">
+
+                    💾 Salva regista
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+
+    <a class="admin-back"
+       th:href="@{/admin/gestione}">
+        ← Torna alla gestione
+    </a>
+
+</main>
+
+</body>
+</html>

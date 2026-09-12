@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="it"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>Modifica Festival</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+
+<body>
+
+<div class="admin-page">
+
+    <div class="admin-header">
+        <h1>🏆 Modifica festival</h1>
+        <p>Modifica le informazioni dell'evento cinematografico</p>
+    </div>
+
+    <form class="admin-form"
+          th:action="@{/festival/mod}"
+          th:object="${fest}"
+          method="POST">
+
+        <input type="hidden" th:field="*{id}">
+
+        <div class="admin-form-group">
+            <label for="name">Nome</label>
+
+            <input
+                id="name"
+                class="admin-input"
+                type="text"
+                required
+                th:field="*{name}"
+                placeholder="Nome del festival"
+            />
+        </div>
+
+        <div class="admin-form-group">
+            <label for="startingDate">Data di inizio</label>
+
+            <input
+                id="startingDate"
+                class="admin-input"
+                type="text"
+                required
+                th:field="*{startingDate}"
+                placeholder="es. 10 settembre"
+            />
+        </div>
+
+        <div class="admin-form-group">
+            <label for="endingDate">Data di fine</label>
+
+            <input
+                id="endingDate"
+                class="admin-input"
+                type="text"
+                required
+                th:field="*{endingDate}"
+                placeholder="es. 20 settembre"
+            />
+        </div>
+
+        <div class="admin-form-group">
+            <label for="year">Anno</label>
+
+            <input
+                id="year"
+                class="admin-input"
+                type="number"
+                required
+                th:field="*{year}"
+                placeholder="Anno"
+            />
+        </div>
+
+        <div class="admin-form-group">
+            <label for="city">Città</label>
+
+            <input
+                id="city"
+                class="admin-input"
+                type="text"
+                required
+                th:field="*{city}"
+                placeholder="Città"
+            />
+        </div>
+
+        <div class="admin-form-group">
+            <label for="description">Descrizione</label>
+
+            <textarea
+                id="description"
+                class="admin-input admin-textarea"
+                required
+                th:field="*{description}"
+                placeholder="Descrizione del festival">
+            </textarea>
+        </div>
+
+        <button type="submit" class="admin-submit">
+            Salva modifiche
+        </button>
+
+    </form>
+
+    <a class="admin-back" th:href="@{/admin/gestione}">
+        ← Torna alla gestione
+    </a>
+
+</div>
+
+</body>
+</html>

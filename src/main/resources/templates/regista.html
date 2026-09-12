@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="it"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>Regista</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+
+<body class="director-page">
+
+    <!-- =========================
+         DIRECTOR HERO
+         ========================= -->
+
+    <header class="director-hero">
+
+        <img class="director-hero-image"
+             th:src="@{/images/film.jpg}"
+             alt="Regista">
+
+        <div class="director-hero-overlay"></div>
+
+        <div class="director-hero-content">
+
+            <h1 class="director-hero-title">
+
+                <span th:text="${reg.name}">
+                </span>
+
+                <span th:text="${reg.surname}">
+                </span>
+
+            </h1>
+
+            <div class="director-hero-subtitle">
+                Scheda del regista
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <main class="director-content">
+
+        <!-- =========================
+             BIOGRAPHY / INFORMATION
+             ========================= -->
+
+        <section class="director-bio-card">
+
+            <div class="director-detail">
+
+                <div class="director-detail-icon">
+                    🎂
+                </div>
+
+                <div class="director-detail-text">
+
+                    <span class="director-detail-label">
+                        DATA DI NASCITA
+                    </span>
+
+                    <span class="director-detail-value"
+                          th:text="${reg.birth}">
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="director-detail">
+
+                <div class="director-detail-icon">
+                    🌍
+                </div>
+
+                <div class="director-detail-text">
+
+                    <span class="director-detail-label">
+                        PAESE
+                    </span>
+
+                    <span class="director-detail-value"
+                          th:text="${reg.country}">
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FILMOGRAPHY
+             ========================= -->
+
+        <section class="filmography-section">
+
+            <h2 class="section-title">
+                FILMOGRAFIA
+            </h2>
+
+
+            <p class="empty-message"
+               th:if="${#lists.isEmpty(films)}">
+
+                Non è disponibile la cinematografia per questo regista.
+
+            </p>
+
+
+            <div class="filmography-grid"
+                 th:if="${not #lists.isEmpty(films)}">
+
+
+                <article class="filmography-card"
+                         th:each="film : ${films}">
+
+                    <div>
+
+                        <h3 class="filmography-title"
+                            th:text="${film.title}">
+                        </h3>
+
+
+                        <div class="filmography-details">
+
+                            <span th:text="${film.year}">
+                            </span>
+
+                            <span>•</span>
+
+                            <span th:text="${film.genre}">
+                            </span>
+
+                            <span>•</span>
+
+                            <span th:text="${film.country}">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <a class="filmography-link"
+                       th:href="@{/film/{id}/info(id=${film.id})}">
+
+                        Vedi film →
+
+                    </a>
+
+                </article>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

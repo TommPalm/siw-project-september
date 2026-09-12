@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="it"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>Crea proiezione - Festival del Cinema</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+
+<body>
+
+<main class="admin-page">
+
+    <header class="admin-header">
+
+        <div class="admin-icon">
+            🍿
+        </div>
+
+        <h1>Nuova proiezione</h1>
+
+        <p>
+            Programma una nuova proiezione all'interno del festival.
+        </p>
+
+    </header>
+
+
+    <section class="admin-form-card">
+
+        <form class="admin-form"
+              th:action="@{/proiezione/crea}"
+              th:object="${proiezione}"
+              method="POST">
+
+
+            <div class="admin-form-group">
+
+                <label for="date">
+                    📅 Data
+                </label>
+
+                <input
+                    id="date"
+                    class="admin-input"
+                    type="text"
+                    required
+                    th:field="*{date}"
+                    placeholder="Es. 15 settembre"
+                />
+
+            </div>
+
+
+            <div class="admin-form-group">
+
+                <label for="time">
+                    🕐 Ora
+                </label>
+
+                <input
+                    id="time"
+                    class="admin-input"
+                    type="text"
+                    required
+                    th:field="*{time}"
+                    placeholder="HH:mm"
+                />
+
+            </div>
+
+
+            <div class="admin-form-group">
+
+                <label for="state">
+                    Stato
+                </label>
+
+                <select
+                    id="state"
+                    class="admin-select"
+                    th:field="*{state}"
+                    required>
+
+                    <option value="">
+                        -- Seleziona lo stato --
+                    </option>
+
+                    <option value="SCHEDULED">
+                        SCHEDULED
+                    </option>
+
+                    <option value="CANCELLED">
+                        CANCELLED
+                    </option>
+
+                    <option value="COMPLETED">
+                        COMPLETED
+                    </option>
+
+                </select>
+
+            </div>
+
+
+			<div class="admin-form-group">
+
+			    <label for="festival-select">
+			        🎪 Festival
+			    </label>
+
+			    <select
+			        id="festival-select"
+			        class="admin-select"
+			        th:field="*{festival}"
+			        required>
+
+			        <option value="">
+			            -- Seleziona un festival --
+			        </option>
+
+			        <option
+			            th:each="festival : ${festivals}"
+			            th:value="${festival.id}"
+			            th:text="${festival.name}">
+			        </option>
+
+			    </select>
+
+			</div>
+
+
+            <div class="admin-form-group">
+
+                <label for="film">
+                    🎞️ Film
+                </label>
+
+                <select
+                    id="film"
+                    class="admin-select"
+                    th:field="*{film}"
+                    required>
+
+                    <option value="">
+                        -- Seleziona un film --
+                    </option>
+
+                    <option
+                        th:each="film : ${films}"
+                        th:value="${film.id}"
+                        th:text="${film.title}">
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="admin-form-group">
+
+                <label for="room">
+                    🏛️ Sala
+                </label>
+
+                <select
+                    id="room"
+                    class="admin-select"
+                    th:field="*{room}"
+                    required>
+
+                    <option value="">
+                        -- Seleziona una sala --
+                    </option>
+
+                    <option
+                        th:each="sala : ${sale}"
+                        th:value="${sala.id}"
+                        th:text="${sala.name}">
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="admin-form-actions">
+
+                <button
+                    type="submit"
+                    class="admin-submit">
+
+                    💾 Salva proiezione
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+
+    <a class="admin-back"
+       th:href="@{/admin/gestione}">
+        ← Torna alla gestione
+    </a>
+
+</main>
+
+</body>
+</html>

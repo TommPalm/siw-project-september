@@ -16,12 +16,16 @@ public class ProiezioneService {
 		this.repo = repo;
 	}
 	
+	@Transactional(readOnly=true)
+	public Proiezione findById(Long id){
+		return repo.findById(id).orElse(null);
+	}
 	@Transactional
-	public Optional<Proiezione> findById(Long id){
-		return repo.findById(id);
+	public void delete(Proiezione proiezione) {
+		repo.delete(proiezione);
 	}
 	
-	@Transactional
+	@Transactional(readOnly=true)
 	public List<Proiezione> findAll(){
 		return repo.findAll();
 	}
@@ -32,15 +36,15 @@ public class ProiezioneService {
 		}
 		return repo.save(pro);
 	}
-	@Transactional
+	@Transactional(readOnly=true)
 	public List<Proiezione> findByFilm(Film film){
 		return repo.findByFilm(film);
 	}
-	@Transactional
+	@Transactional(readOnly=true)
 	public List<Proiezione> findByDate(LocalDate date){
 		return repo.findByDate(date);
 	}
-	@Transactional
+	@Transactional(readOnly=true)
 	public List<Proiezione> findScheduledByDate(String date){
 		return repo.findScheduledByDate("SCHEDULED", date);
 	}

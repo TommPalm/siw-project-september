@@ -15,11 +15,11 @@ public class RecensioneService {
 		this.repo = repo;
 	}
 	
-	@Transactional
-	public Optional<Recensione> findById(Long id){
-		return repo.findById(id);
+	@Transactional(readOnly=true)
+	public Recensione findById(Long id){
+		return repo.findById(id).orElse(null);
 	}
-	@Transactional
+	@Transactional(readOnly=true)
 	public List<Recensione> findAll(){
 		return repo.findAll();
 	}
@@ -27,12 +27,23 @@ public class RecensioneService {
 	public Recensione save(Recensione review) {
 		return repo.save(review);
 	}
-	@Transactional
+	@Transactional(readOnly=true)
 	public List<Recensione> findAllOrderByVote(){
 		return repo.findAllByOrderByVote();
 	}
-	@Transactional
+	@Transactional(readOnly=true)
 	public List<Recensione> findByUser(Utente user){
 		return repo.findByUser(user);
 	}
+	@Transactional(readOnly=true)
+	public Recensione findByUserAndFilm(Utente user, Film film) {
+	    return repo.findByUserAndFilm(user, film).orElse(null);
+	}
+	@Transactional
+	public void delete(Long id) {
+		repo.deleteById(id);
+	}
+
+
+
 }

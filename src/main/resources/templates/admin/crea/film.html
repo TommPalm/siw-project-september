@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="it"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>Crea film - Festival del Cinema</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+
+<body>
+
+<main class="admin-page">
+
+    <header class="admin-header">
+
+        <div class="admin-icon">
+            🎞️
+        </div>
+
+        <h1>Nuovo film</h1>
+
+        <p>
+            Inserisci le informazioni del nuovo film.
+        </p>
+
+    </header>
+
+
+    <section class="admin-form-card">
+
+        <form class="admin-form"
+              th:action="@{/film/crea}"
+              th:object="${film}"
+              method="POST">
+
+
+            <div class="admin-form-group">
+
+                <label for="title">
+                    Titolo
+                </label>
+
+                <input
+                    id="title"
+                    class="admin-input"
+                    type="text"
+                    required
+                    th:field="*{title}"
+                    placeholder="Titolo del film"
+                />
+
+            </div>
+
+
+            <div class="admin-form-group">
+
+                <label for="genre">
+                    Genere
+                </label>
+
+                <input
+                    id="genre"
+                    class="admin-input"
+                    type="text"
+                    required
+                    th:field="*{genre}"
+                    placeholder="Es. Drammatico"
+                />
+
+            </div>
+
+
+            <div class="admin-form-group">
+
+                <label for="length">
+                    Durata
+                </label>
+
+                <input
+                    id="length"
+                    class="admin-input"
+                    type="text"
+                    required
+                    th:field="*{length}"
+                    placeholder="Es. 01:45"
+                />
+
+            </div>
+
+
+            <div class="admin-form-group">
+
+                <label for="year">
+                    Anno
+                </label>
+
+                <input
+                    id="year"
+                    class="admin-input"
+                    type="number"
+                    required
+                    th:field="*{year}"
+                    placeholder="Es. 2026"
+                />
+
+            </div>
+
+
+            <div class="admin-form-group">
+
+                <label for="country">
+                    Paese di produzione
+                </label>
+
+                <input
+                    id="country"
+                    class="admin-input"
+                    type="text"
+                    required
+                    th:field="*{country}"
+                    placeholder="Es. Italia"
+                />
+
+            </div>
+
+
+            <div class="admin-form-group">
+
+                <label for="director">
+                    🎬 Regista
+                </label>
+
+                <select
+                    id="director"
+                    class="admin-select"
+                    th:field="*{director}"
+                    required>
+
+                    <option value="">
+                        -- Seleziona un regista --
+                    </option>
+
+                    <option
+                        th:each="regista : ${registi}"
+                        th:value="${regista.id}"
+                        th:text="${regista.name + ' ' + regista.surname}">
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="admin-form-group">
+
+                <label>
+                    🎪 Festival
+                </label>
+
+                <div class="checkbox-group">
+
+                    <label
+                        class="checkbox-option"
+                        th:each="festival : ${festivals}">
+
+                        <input
+                            type="checkbox"
+                            th:field="*{festivals}"
+                            th:value="${festival.id}"
+                        />
+
+                        <span
+                            th:text="${festival.name}">
+                        </span>
+
+                    </label>
+
+                </div>
+
+                <p class="form-hint">
+                    Puoi selezionare uno o più festival.
+                </p>
+
+            </div>
+
+
+            <div class="admin-form-actions">
+
+                <button
+                    type="submit"
+                    class="admin-submit">
+
+                    💾 Salva film
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+
+    <a class="admin-back"
+       th:href="@{/admin/gestione}">
+        ← Torna alla gestione
+    </a>
+
+</main>
+
+</body>
+</html>

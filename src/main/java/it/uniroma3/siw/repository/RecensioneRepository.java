@@ -10,4 +10,6 @@ public interface RecensioneRepository extends JpaRepository<Recensione, Long> {
 	List<Recensione> findByUser(Utente user);
 	
 	List<Recensione> findAllByOrderByVote();
+
+	Optional<Recensione> findByUserAndFilm(Utente user, Film title);
 }

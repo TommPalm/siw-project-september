@@ -6,4 +6,6 @@ import it.uniroma3.siw.model.*;
 public interface CredenzialiRepository extends JpaRepository<Credenziali, Long> {
 
 	Credenziali findByUsername(String username);
+	
+	boolean existsByUsername(String username);
 }

@@ -24,10 +24,10 @@ public class SecurityConfig {
 	            if (authentication.getAuthorities().stream()
 	                    .anyMatch(a -> a.getAuthority().equals("ADMIN"))) {
 
-	                response.sendRedirect("/admin");
+	                response.sendRedirect("/admin/gestione");
 
 	            } else {
-	                response.sendRedirect("/personal");
+	                response.sendRedirect("/registered/home");
 	            }
 	        };
 	    }
@@ -63,7 +63,7 @@ public class SecurityConfig {
         httpSecurity.authorizeHttpRequests(authorize -> {
 
             authorize.requestMatchers(
-                    "/","/images/**","/css/**"
+                    "/","/images/**","/css/**","/festival/{id}/info","/film/{id}/info","/regista/{id}/info"
             ).permitAll();
 
             authorize.requestMatchers("/admin/**")

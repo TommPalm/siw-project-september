@@ -18,15 +18,7 @@ public class HomeController {
 
 	@GetMapping("/")
 	public String home(Model model) {
-	    List<Festival> festivals = festServ.findAll();
-
-	    System.out.println("FESTIVALS: " + festivals.size());
-
-	    for (Festival f : festivals) {
-	        System.out.println(f.getId() + " - " + f.getName());
-	    }
-
-	    model.addAttribute("festivals", festivals);
+	    model.addAttribute("festivals", festServ.findAll());
 	    return "home";
 	}
 

@@ -1,43 +1,3040 @@
-.titolo{
-	position: relative;
-	display: inline-block;
-}
+/* =========================
+   FESTIVAL HEADER
+   ========================= */
 
-#nome{
-	position:absolute;
-	border: solid black;
-	top: 55%;
-	right: 55%;
-	background-color: antiquewhite;
-	font-size: 40px;
+.titolo {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 70px;
 }
 
 #sfondo {
-display: block;
-width: 1400px;
-height: 280px;
-opacity: 80%;
-border: solid black;
+    display: block;
+    width: 1400px;
+    height: 280px;
+    opacity: 80%;
+    border: solid rgb(128, 0, 0);
+    object-fit: cover;
 }
 
-#login{
-position: absolute;
-font-size: 18px;
-top: 10%;
-left: 85%;
-border: solid red;
-background-color: white;
-border-radius: 80px;
-padding: 5px;
+#festival {
+    position: absolute;
+    border: solid rgb(255, 0, 0);
+    top: 93%;
+    right: 80%;
+    background-color: rgb(255, 255, 0);
+    font-size: 40px;
 }
 
-#register{
-position: absolute;
-font-size: 18px;
-top: 10%;
-left: 90%;
-border: solid red;
-background-color: white;
-border-radius: 80px;
-padding: 5px;
+#quando {
+    position: absolute;
+    font-size: 25px;
+    left: 75%;
+    color: rgb(64, 0, 64);
 }
+
+
+/* =========================
+   GENERAL SECTIONS
+   ========================= */
+
+.festival-section {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 50px auto;
+}
+
+.section-title {
+    font-size: 28px;
+    color: rgb(64, 0, 64);
+    border-bottom: 3px solid rgb(128, 0, 0);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   FILM LIST
+   ========================= */
+
+.film-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.film-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: #fff8e7;
+    border-left: 6px solid rgb(128, 0, 0);
+    border-radius: 8px;
+
+    padding: 18px 22px;
+
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+
+    transition: transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+.film-card:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.18);
+}
+
+.film-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.film-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #3d003d;
+}
+
+.film-details {
+    font-size: 15px;
+    color: #666;
+}
+
+.film-link {
+    background-color: rgb(128, 0, 0);
+    color: white;
+
+    text-decoration: none;
+
+    padding: 9px 15px;
+    border-radius: 6px;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    transition: background-color 0.2s ease;
+}
+
+.film-link:hover {
+    background-color: rgb(90, 0, 0);
+}
+
+
+/* =========================
+   PROJECTIONS
+   ========================= */
+
+.projection-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.projection-card {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 25px;
+
+    background: white;
+
+    border-radius: 10px;
+    border: 1px solid #ddd;
+
+    padding: 22px 25px;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10);
+
+    transition: transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+.projection-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 18px rgba(0, 0, 0, 0.16);
+}
+
+.projection-main {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.projection-film {
+    font-size: 23px;
+    font-weight: bold;
+    color: rgb(64, 0, 64);
+}
+
+.projection-datetime {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    font-size: 17px;
+    color: #555;
+}
+
+.projection-date {
+    font-weight: bold;
+}
+
+.projection-time {
+    font-weight: bold;
+    color: rgb(128, 0, 0);
+}
+
+.projection-separator {
+    color: #aaa;
+}
+
+
+/* =========================
+   ROOM
+   ========================= */
+
+.projection-room {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    min-width: 220px;
+}
+
+.room-label {
+    font-size: 12px;
+    font-weight: bold;
+    color: #999;
+    letter-spacing: 1px;
+}
+
+.room-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.room-address {
+    font-size: 14px;
+    color: #777;
+}
+
+
+/* =========================
+   PROJECTION STATE
+   ========================= */
+
+.projection-state {
+    min-width: 90px;
+    text-align: center;
+
+    padding: 7px 12px;
+    border-radius: 20px;
+
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+/* Scheduled = green */
+
+.state-scheduled {
+    color: #176b2c;
+    background-color: #dff5e3;
+}
+
+/* Completed = blue */
+
+.state-completed {
+    color: #155a8a;
+    background-color: #dceeff;
+}
+
+/* Cancelled = red */
+
+.state-cancelled {
+    color: #a11a1a;
+    background-color: #ffe0e0;
+}
+
+
+/* =========================
+   EMPTY LIST
+   ========================= */
+
+.empty-message {
+    color: #777;
+    font-style: italic;
+    background-color: #f5f5f5;
+    padding: 15px;
+    border-radius: 6px;
+}
+
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 900px) {
+
+    .projection-card {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .projection-room {
+        min-width: 0;
+    }
+
+    .projection-state {
+        width: fit-content;
+    }
+
+    #sfondo {
+        width: 100%;
+        height: 220px;
+    }
+
+    .titolo {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .festival-section {
+        width: 95%;
+    }
+
+    .film-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .film-link {
+        align-self: flex-start;
+    }
+
+    .section-title {
+        font-size: 23px;
+    }
+}
+
+
+/* =========================================
+   HOME PAGE - HERO
+   ========================================= */
+
+.home-hero {
+    position: relative;
+    height: 420px;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+}
+
+
+/* Background image */
+
+.home-background {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    top: 0;
+    left: 0;
+
+    z-index: 0;
+}
+
+
+/* Dark overlay */
+
+.hero-overlay {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    top: 0;
+    left: 0;
+
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.25),
+            rgba(35, 0, 35, 0.85)
+        );
+
+    z-index: 1;
+}
+
+
+/* Hero text */
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    text-align: center;
+
+    margin-top: 20px;
+}
+
+.hero-title {
+    font-size: 56px;
+    font-weight: bold;
+
+    text-shadow:
+        3px 3px 6px rgba(0, 0, 0, 0.7);
+
+    letter-spacing: 2px;
+}
+
+.hero-subtitle {
+    font-size: 20px;
+
+    margin-top: 15px;
+
+    color: #f5e9f5;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* =========================================
+   LOGIN / REGISTER
+   ========================================= */
+
+.hero-buttons {
+    position: absolute;
+
+    top: 25px;
+    right: 35px;
+
+    z-index: 3;
+
+    display: flex;
+    gap: 12px;
+}
+
+.login-button,
+.register-button {
+    text-decoration: none;
+
+    padding: 10px 20px;
+
+    border-radius: 25px;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* Login */
+
+.login-button {
+    color: white;
+
+    border: 2px solid white;
+
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.login-button:hover {
+    background-color: white;
+    color: rgb(64, 0, 64);
+
+    transform: translateY(-2px);
+}
+
+
+/* Register */
+
+.register-button {
+    color: white;
+
+    background-color: rgb(128, 0, 0);
+
+    border: 2px solid rgb(128, 0, 0);
+}
+
+.register-button:hover {
+    background-color: rgb(170, 0, 0);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+
+/* =========================================
+   MAIN CONTENT
+   ========================================= */
+
+.home-content {
+    width: 90%;
+    max-width: 1200px;
+
+    margin: 60px auto;
+}
+
+
+/* Heading */
+
+.festival-heading {
+    text-align: center;
+
+    margin-bottom: 40px;
+}
+
+.festival-heading h1 {
+    margin: 0;
+
+    font-size: 36px;
+
+    color: rgb(64, 0, 64);
+}
+
+.festival-heading p {
+    margin-top: 10px;
+
+    font-size: 17px;
+
+    color: #777;
+}
+
+
+/* =========================================
+   FESTIVAL GRID
+   ========================================= */
+
+.festival-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(320px, 1fr));
+
+    gap: 28px;
+}
+
+
+/* =========================================
+   FESTIVAL CARD
+   ========================================= */
+
+.festival-card {
+    overflow: hidden;
+
+    background-color: white;
+
+    border-radius: 14px;
+
+    border: 1px solid #e5e5e5;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.10);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.festival-card:hover {
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 12px 25px rgba(0, 0, 0, 0.18);
+}
+
+
+/* =========================================
+   CARD HEADER
+   ========================================= */
+
+.festival-card-header {
+    position: relative;
+
+    padding: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgb(64, 0, 64),
+            rgb(128, 0, 0)
+        );
+
+    color: white;
+}
+
+
+.festival-card-header h2 {
+    margin: 0;
+
+    font-size: 27px;
+
+    padding-right: 60px;
+}
+
+
+.festival-year {
+    position: absolute;
+
+    top: 20px;
+    right: 20px;
+
+    padding: 5px 10px;
+
+    border-radius: 15px;
+
+    background-color: rgba(255, 255, 255, 0.18);
+
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+/* =========================================
+   CARD BODY
+   ========================================= */
+
+.festival-card-body {
+    padding: 25px;
+}
+
+
+/* =========================================
+   FESTIVAL INFO
+   ========================================= */
+
+.festival-info {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    margin-bottom: 18px;
+}
+
+
+.info-icon {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background-color: #f4eaf4;
+
+    font-size: 19px;
+}
+
+
+.info-label {
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    color: #999;
+
+    letter-spacing: 1px;
+}
+
+
+.info-value {
+    display: block;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    color: #444;
+}
+
+
+/* =========================================
+   DESCRIPTION
+   ========================================= */
+
+.festival-description {
+    min-height: 65px;
+
+    margin: 20px 0;
+
+    padding-top: 18px;
+
+    border-top: 1px solid #eee;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+
+    color: #666;
+}
+
+
+/* =========================================
+   FESTIVAL BUTTON
+   ========================================= */
+
+.festival-button {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 12px 17px;
+
+    border-radius: 7px;
+
+    background-color: rgb(128, 0, 0);
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    transition:
+        background-color 0.2s ease,
+        padding 0.2s ease;
+}
+
+
+.festival-button:hover {
+    background-color: rgb(95, 0, 0);
+
+    padding-left: 20px;
+}
+
+
+/* =========================================
+   EMPTY STATE
+   ========================================= */
+
+.empty-festivals {
+    text-align: center;
+
+    padding: 60px 20px;
+
+    border-radius: 12px;
+
+    background-color: #f8f8f8;
+
+    color: #777;
+}
+
+
+.empty-festivals span {
+    display: block;
+
+    margin-bottom: 15px;
+
+    font-size: 45px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 800px) {
+
+    .home-hero {
+        height: 360px;
+    }
+
+    .hero-title {
+        font-size: 38px;
+    }
+
+    .hero-subtitle {
+        font-size: 16px;
+        padding: 0 20px;
+    }
+
+    .hero-buttons {
+        top: 15px;
+        right: 15px;
+    }
+
+    .login-button,
+    .register-button {
+        padding: 8px 13px;
+        font-size: 14px;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .hero-title {
+        font-size: 30px;
+    }
+
+    .hero-buttons {
+        position: absolute;
+
+        top: 15px;
+        left: 0;
+        right: 0;
+
+        justify-content: center;
+    }
+
+    .home-content {
+        width: 94%;
+        margin-top: 40px;
+    }
+
+    .festival-heading h1 {
+        font-size: 28px;
+    }
+
+    .festival-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================
+   FILM PAGE
+   ========================================= */
+
+.film-page {
+    background-color: #faf8fa;
+    min-height: 100vh;
+}
+
+
+/* -----------------------------------------
+   FILM HERO
+   ----------------------------------------- */
+
+.film-hero {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    height: 300px;
+    margin: 30px auto 50px auto;
+
+    overflow: hidden;
+    border-radius: 16px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+}
+
+.film-hero-image {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    filter: brightness(55%);
+}
+
+.film-hero-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(64, 0, 64, 0.75),
+            rgba(128, 0, 0, 0.65)
+        );
+}
+
+.film-hero-content {
+    position: absolute;
+
+    left: 45px;
+    right: 45px;
+    bottom: 35px;
+
+    color: white;
+}
+
+.film-hero-title {
+    margin: 0 0 12px 0;
+
+    font-size: 48px;
+    font-weight: bold;
+
+    text-shadow:
+        2px 3px 7px rgba(0, 0, 0, 0.5);
+}
+
+.film-hero-subtitle {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 9px;
+
+    font-size: 16px;
+
+    color: #f5e9f5;
+}
+
+.film-hero-subtitle .separator {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+
+/* -----------------------------------------
+   FILM CONTENT
+   ----------------------------------------- */
+
+.film-content {
+    width: 90%;
+    max-width: 1200px;
+
+    margin: 0 auto 60px auto;
+}
+
+
+/* -----------------------------------------
+   FILM INFORMATION CARD
+   ----------------------------------------- */
+
+.film-info-card {
+    display: grid;
+
+    grid-template-columns: 1fr auto;
+
+    gap: 35px;
+
+    padding: 30px;
+
+    margin-bottom: 45px;
+
+    background-color: white;
+
+    border-radius: 14px;
+
+    border: 1px solid #e8e1e8;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.film-info-main {
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+.film-info-heading {
+    margin: 0;
+
+    font-size: 24px;
+
+    color: rgb(64, 0, 64);
+}
+
+.film-meta {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+}
+
+.film-meta-item {
+    padding: 8px 13px;
+
+    border-radius: 20px;
+
+    background-color: #f4eaf4;
+
+    color: #4a174a;
+
+    font-size: 14px;
+
+    font-weight: bold;
+}
+
+.film-director-box {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #eee;
+}
+
+.director-icon {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgb(64, 0, 64),
+            rgb(128, 0, 0)
+        );
+
+    color: white;
+
+    font-size: 20px;
+}
+
+.director-info {
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+.director-label {
+    font-size: 11px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    color: #999;
+}
+
+.director-name {
+    font-size: 18px;
+
+    font-weight: bold;
+
+    color: #333;
+}
+
+.director-link {
+    align-self: center;
+
+    padding: 11px 17px;
+
+    border-radius: 7px;
+
+    background-color: rgb(128, 0, 0);
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.director-link:hover {
+    background-color: rgb(95, 0, 0);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, 0.18);
+}
+
+
+/* -----------------------------------------
+   REVIEWS
+   ----------------------------------------- */
+
+.reviews-section {
+    margin-bottom: 50px;
+}
+
+.review-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 16px;
+}
+
+.review-card {
+    position: relative;
+
+    padding: 22px 25px 60px 25px;
+
+
+    background-color: white;
+
+    border-left: 5px solid rgb(128, 0, 0);
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.08);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.review-card:hover {
+    transform: translateX(4px);
+
+    box-shadow:
+        0 7px 18px rgba(0, 0, 0, 0.13);
+}
+
+.review-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 12px;
+}
+
+.review-date {
+    font-size: 14px;
+
+    color: #888;
+}
+
+.review-vote {
+    padding: 6px 11px;
+
+    border-radius: 15px;
+
+    background-color: #fff2b8;
+
+    color: #735d00;
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+.review-text {
+    margin: 0;
+
+    color: #555;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+.review-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.review-actions .film-link {
+    display: inline-block;
+}
+
+/* -----------------------------------------
+   PROJECTIONS ON FILM PAGE
+   ----------------------------------------- */
+
+.film-projections {
+    margin-top: 45px;
+}
+
+.film-projection-festival {
+    font-size: 12px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    color: #999;
+
+    margin-bottom: 3px;
+}
+
+
+/* =========================================
+   DIRECTOR PAGE
+   ========================================= */
+
+.director-page {
+    background-color: #faf8fa;
+
+    min-height: 100vh;
+}
+
+
+/* -----------------------------------------
+   DIRECTOR HERO
+   ----------------------------------------- */
+
+.director-hero {
+    position: relative;
+
+    width: 90%;
+    max-width: 1200px;
+
+    height: 280px;
+
+    margin: 30px auto 50px auto;
+
+    overflow: hidden;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.18);
+}
+
+.director-hero-image {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    filter: brightness(50%);
+}
+
+.director-hero-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(64, 0, 64, 0.80),
+            rgba(128, 0, 0, 0.65)
+        );
+}
+
+.director-hero-content {
+    position: absolute;
+
+    left: 45px;
+    bottom: 35px;
+
+    color: white;
+}
+
+.director-hero-title {
+    margin: 0;
+
+    font-size: 46px;
+
+    text-shadow:
+        2px 3px 7px rgba(0, 0, 0, 0.55);
+}
+
+.director-hero-subtitle {
+    margin-top: 10px;
+
+    font-size: 17px;
+
+    color: #f5e9f5;
+}
+
+
+/* -----------------------------------------
+   DIRECTOR BIO
+   ----------------------------------------- */
+
+.director-content {
+    width: 90%;
+    max-width: 1200px;
+
+    margin: 0 auto 60px auto;
+}
+
+.director-bio-card {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 25px;
+
+    margin-bottom: 45px;
+
+    padding: 28px;
+
+    background-color: white;
+
+    border-radius: 14px;
+
+    border: 1px solid #e8e1e8;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.director-detail {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 15px;
+
+    border-radius: 9px;
+
+    background-color: #faf7fa;
+}
+
+.director-detail-icon {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 43px;
+    height: 43px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background-color: #f0e3f0;
+
+    font-size: 18px;
+}
+
+.director-detail-text {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+.director-detail-label {
+    font-size: 11px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    color: #999;
+}
+
+.director-detail-value {
+    font-size: 16px;
+
+    font-weight: bold;
+
+    color: #444;
+}
+
+
+/* -----------------------------------------
+   DIRECTOR FILMOGRAPHY
+   ----------------------------------------- */
+
+.filmography-section {
+    margin-top: 40px;
+}
+
+.filmography-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(300px, 1fr));
+
+    gap: 20px;
+}
+
+.filmography-card {
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    min-height: 190px;
+
+    padding: 24px;
+
+    background-color: white;
+
+    border-radius: 12px;
+
+    border: 1px solid #e5e5e5;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.08);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.filmography-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 10px 22px rgba(0, 0, 0, 0.15);
+}
+
+.filmography-title {
+    margin: 0 0 12px 0;
+
+    font-size: 22px;
+
+    color: rgb(64, 0, 64);
+}
+
+.filmography-details {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    color: #777;
+
+    font-size: 14px;
+}
+
+.filmography-link {
+    display: inline-block;
+
+    margin-top: 20px;
+
+    padding: 9px 14px;
+
+    width: fit-content;
+
+    border-radius: 6px;
+
+    background-color: rgb(128, 0, 0);
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.filmography-link:hover {
+    background-color: rgb(95, 0, 0);
+
+    transform: translateX(3px);
+}
+
+
+/* =========================================
+   RESPONSIVE - FILM / DIRECTOR
+   ========================================= */
+
+@media (max-width: 800px) {
+
+    .film-hero {
+        height: 270px;
+    }
+
+    .film-hero-title {
+        font-size: 36px;
+    }
+
+    .film-hero-content {
+        left: 25px;
+        right: 25px;
+        bottom: 25px;
+    }
+
+    .film-info-card {
+        grid-template-columns: 1fr;
+    }
+
+    .director-link {
+        align-self: flex-start;
+    }
+
+    .director-hero {
+        height: 250px;
+    }
+
+    .director-hero-title {
+        font-size: 36px;
+    }
+
+    .director-hero-content {
+        left: 25px;
+        bottom: 25px;
+    }
+
+    .director-bio-card {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .film-hero,
+    .director-hero {
+        width: 95%;
+    }
+
+    .film-content,
+    .director-content {
+        width: 95%;
+    }
+
+    .film-hero-title {
+        font-size: 30px;
+    }
+
+    .film-hero-subtitle {
+        font-size: 14px;
+    }
+
+    .director-hero-title {
+        font-size: 30px;
+    }
+
+    .film-info-card,
+    .director-bio-card {
+        padding: 20px;
+    }
+
+    .review-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .filmography-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================
+   LOGIN / REGISTER PAGES
+   ========================================= */
+
+.auth-page {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 50px 20px;
+
+    box-sizing: border-box;
+
+    background:
+        linear-gradient(
+            135deg,
+            #faf7fa 0%,
+            #f4eaf4 50%,
+            #fff8e7 100%
+        );
+}
+
+
+/* -----------------------------------------
+   AUTH HEADER
+   ----------------------------------------- */
+
+.auth-header {
+    text-align: center;
+
+    margin-bottom: 25px;
+}
+
+.auth-logo {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 58px;
+    height: 58px;
+
+    margin-bottom: 12px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgb(64, 0, 64),
+            rgb(128, 0, 0)
+        );
+
+    color: white;
+
+    font-size: 25px;
+
+    box-shadow:
+        0 5px 15px rgba(64, 0, 64, 0.25);
+}
+
+.auth-header h1 {
+    margin: 0;
+
+    font-size: 30px;
+
+    color: rgb(64, 0, 64);
+}
+
+.auth-header p {
+    margin: 8px 0 0 0;
+
+    color: #777;
+
+    font-size: 15px;
+}
+
+
+/* -----------------------------------------
+   AUTH CARD
+   ----------------------------------------- */
+
+.auth-card {
+    width: 100%;
+    max-width: 460px;
+
+    box-sizing: border-box;
+
+    padding: 35px;
+
+    background-color: white;
+
+    border-radius: 16px;
+
+    border: 1px solid #e5dce5;
+
+    box-shadow:
+        0 10px 30px rgba(64, 0, 64, 0.12);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.auth-card:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 14px 35px rgba(64, 0, 64, 0.16);
+}
+
+
+/* -----------------------------------------
+   AUTH CARD TITLE
+   ----------------------------------------- */
+
+.auth-card-title {
+    margin: 0 0 8px 0;
+
+    text-align: center;
+
+    font-size: 26px;
+
+    color: rgb(64, 0, 64);
+}
+
+.auth-card-subtitle {
+    margin: 0 0 28px 0;
+
+    text-align: center;
+
+    color: #777;
+
+    font-size: 15px;
+}
+
+
+/* -----------------------------------------
+   FORM
+   ----------------------------------------- */
+
+.auth-form {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+.form-group label {
+    font-size: 13px;
+
+    font-weight: bold;
+
+    color: #4b4b4b;
+
+    letter-spacing: 0.3px;
+}
+
+
+/* -----------------------------------------
+   INPUTS
+   ----------------------------------------- */
+
+.auth-input {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 12px 14px;
+
+    border: 1px solid #d8d0d8;
+
+    border-radius: 8px;
+
+    background-color: #fcfbfc;
+
+    color: #333;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.auth-input::placeholder {
+    color: #aaa;
+}
+
+.auth-input:focus {
+    border-color: rgb(128, 0, 0);
+
+    background-color: white;
+
+    box-shadow:
+        0 0 0 3px rgba(128, 0, 0, 0.10);
+}
+
+
+/* -----------------------------------------
+   VALIDATION ERRORS
+   ----------------------------------------- */
+
+.field-error {
+    display: block;
+
+    margin-top: 2px;
+
+    color: #a11a1a;
+
+    font-size: 13px;
+
+    line-height: 1.4;
+}
+
+.auth-error {
+    width: 100%;
+
+    max-width: 460px;
+
+    box-sizing: border-box;
+
+    margin: 0 0 20px 0;
+
+    padding: 13px 16px;
+
+    border-radius: 8px;
+
+    border-left: 5px solid #a11a1a;
+
+    background-color: #ffe5e5;
+
+    color: #8c1515;
+
+    font-size: 14px;
+
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.07);
+}
+
+
+/* -----------------------------------------
+   AUTH BUTTON
+   ----------------------------------------- */
+
+.auth-button {
+    width: 100%;
+
+    padding: 13px 18px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgb(128, 0, 0),
+            rgb(105, 0, 50)
+        );
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 4px 10px rgba(128, 0, 0, 0.20);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.auth-button:hover {
+    transform: translateY(-2px);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgb(160, 0, 0),
+            rgb(125, 0, 60)
+        );
+
+    box-shadow:
+        0 7px 16px rgba(128, 0, 0, 0.28);
+}
+
+.auth-button:active {
+    transform: translateY(0);
+}
+
+
+/* -----------------------------------------
+   AUTH FOOTER
+   ----------------------------------------- */
+
+.auth-footer {
+    width: 100%;
+    max-width: 460px;
+
+    margin-top: 22px;
+
+    text-align: center;
+
+    color: #777;
+
+    font-size: 14px;
+}
+
+.auth-footer p {
+    margin: 8px 0;
+}
+
+.auth-footer a {
+    color: rgb(128, 0, 0);
+
+    font-weight: bold;
+
+    text-decoration: none;
+
+    transition: color 0.2s ease;
+}
+
+.auth-footer a:hover {
+    color: rgb(64, 0, 64);
+
+    text-decoration: underline;
+}
+
+.auth-home-link {
+    display: inline-block;
+
+    margin-top: 8px;
+
+    color: rgb(64, 0, 64) !important;
+}
+
+
+/* -----------------------------------------
+   RESPONSIVE
+   ----------------------------------------- */
+
+@media (max-width: 600px) {
+
+    .auth-page {
+        padding: 30px 15px;
+    }
+
+    .auth-card {
+        padding: 25px 20px;
+
+        border-radius: 13px;
+    }
+
+    .auth-card-title {
+        font-size: 23px;
+    }
+
+    .auth-header h1 {
+        font-size: 26px;
+    }
+}
+
+.auth-input {
+    font-family: inherit;
+}
+
+textarea.auth-input {
+    resize: vertical;
+    min-height: 150px;
+    line-height: 1.5;
+}
+
+select.auth-input {
+    cursor: pointer;
+}
+.new-review-container {
+width: 90%;
+max-width: 1200px;
+
+margin: 25px auto 50px auto;
+
+display: flex;
+justify-content: flex-end;
+
+}
+
+.new-review-container .film-link {
+display: inline-block;
+}
+
+/* =========================================
+   ADMIN PAGES
+   ========================================= */
+
+.admin-page {
+    min-height: 100vh;
+    padding: 50px 20px 70px 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #faf7fa 0%,
+            #f4eaf4 50%,
+            #fff8e7 100%
+        );
+
+    box-sizing: border-box;
+}
+
+
+/* -----------------------------------------
+   ADMIN HEADER
+   ----------------------------------------- */
+
+.admin-header {
+    width: 90%;
+    max-width: 1100px;
+
+    margin: 0 auto 35px auto;
+
+    text-align: center;
+}
+
+.admin-header h1 {
+    margin: 0;
+
+    font-size: 38px;
+
+    color: rgb(64, 0, 64);
+}
+
+.admin-header p {
+    margin-top: 10px;
+
+    color: #777;
+
+    font-size: 16px;
+}
+
+
+/* -----------------------------------------
+   ADMIN FORM CARD
+   ----------------------------------------- */
+
+.admin-form {
+    width: 90%;
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    padding: 35px;
+
+    box-sizing: border-box;
+
+    background-color: white;
+
+    border-radius: 16px;
+
+    border: 1px solid #e5dce5;
+
+    box-shadow:
+        0 10px 30px rgba(64, 0, 64, 0.12);
+}
+
+
+/* -----------------------------------------
+   FORM GROUP
+   ----------------------------------------- */
+
+.admin-form-group {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+    margin-bottom: 20px;
+}
+
+.admin-form-group label {
+    font-size: 13px;
+
+    font-weight: bold;
+
+    color: #4b4b4b;
+
+    letter-spacing: 0.4px;
+}
+
+
+/* -----------------------------------------
+   INPUTS / SELECTS
+   ----------------------------------------- */
+
+.admin-input,
+.admin-select {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 12px 14px;
+
+    border: 1px solid #d8d0d8;
+
+    border-radius: 8px;
+
+    background-color: #fcfbfc;
+
+    color: #333;
+
+    font-size: 15px;
+
+    font-family: inherit;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.admin-input:focus,
+.admin-select:focus {
+    border-color: rgb(128, 0, 0);
+
+    background-color: white;
+
+    box-shadow:
+        0 0 0 3px rgba(128, 0, 0, 0.10);
+}
+
+
+/* -----------------------------------------
+   TEXTAREA
+   ----------------------------------------- */
+
+.admin-textarea {
+    min-height: 130px;
+
+    resize: vertical;
+
+    line-height: 1.5;
+}
+
+
+/* -----------------------------------------
+   SAVE BUTTON
+   ----------------------------------------- */
+
+.admin-submit {
+    width: 100%;
+
+    margin-top: 10px;
+
+    padding: 13px 18px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgb(128, 0, 0),
+            rgb(105, 0, 50)
+        );
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 4px 10px rgba(128, 0, 0, 0.20);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.admin-submit:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 7px 16px rgba(128, 0, 0, 0.28);
+}
+
+
+/* -----------------------------------------
+   BACK BUTTON
+   ----------------------------------------- */
+
+.admin-back {
+    display: block;
+
+    width: fit-content;
+
+    margin: 25px auto 0 auto;
+
+    padding: 10px 17px;
+
+    border-radius: 7px;
+
+    background-color: #f0e3f0;
+
+    color: rgb(64, 0, 64);
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.admin-back:hover {
+    background-color: #e4d2e4;
+
+    transform: translateY(-2px);
+}
+
+
+/* -----------------------------------------
+   RESPONSIVE
+   ----------------------------------------- */
+
+@media (max-width: 600px) {
+
+    .admin-page {
+        padding: 30px 15px 50px 15px;
+    }
+
+    .admin-header h1 {
+        font-size: 30px;
+    }
+
+    .admin-form {
+        width: 95%;
+        padding: 25px 20px;
+    }
+}
+/* =========================================
+   FESTIVAL CHECKBOX SELECTION
+   ========================================= */
+
+.festival-selection {
+    padding: 18px;
+
+    border-radius: 10px;
+
+    border: 1px solid #e5dce5;
+
+    background-color: #faf7fa;
+}
+
+.festival-selection-title {
+    font-size: 15px;
+
+    font-weight: bold;
+
+    color: rgb(64, 0, 64);
+
+    margin-bottom: 4px;
+}
+
+.festival-selection-help {
+    margin: 0 0 15px 0;
+
+    color: #888;
+
+    font-size: 13px;
+}
+
+
+/* Individual festival */
+
+.festival-checkbox {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 11px 12px;
+
+    margin-bottom: 7px;
+
+    border-radius: 7px;
+
+    background-color: white;
+
+    border: 1px solid #eee;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.festival-checkbox:hover {
+    background-color: #f4eaf4;
+
+    border-color: #d8c4d8;
+}
+
+
+/* Checkbox */
+
+.festival-checkbox input {
+    width: 17px;
+    height: 17px;
+
+    accent-color: rgb(128, 0, 0);
+
+    cursor: pointer;
+}
+
+
+/* Festival name */
+
+.festival-checkbox label {
+    margin: 0;
+
+    color: #444;
+
+    font-size: 14px;
+
+    font-weight: normal;
+
+    cursor: pointer;
+}
+/* =========================================
+   ADMIN MANAGEMENT PAGE
+   ========================================= */
+
+.management-page {
+    min-height: 100vh;
+
+    padding: 50px 20px 70px 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #faf7fa 0%,
+            #f4eaf4 50%,
+            #fff8e7 100%
+        );
+}
+
+.management-header {
+    width: 90%;
+    max-width: 1200px;
+
+    margin: 0 auto 40px auto;
+
+    text-align: center;
+}
+
+.management-header h1 {
+    margin: 0;
+
+    font-size: 42px;
+
+    color: rgb(64, 0, 64);
+}
+
+.management-header p {
+    color: #777;
+
+    font-size: 16px;
+}
+
+
+/* Grid */
+
+.management-grid {
+    width: 90%;
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(500px, 1fr));
+
+    gap: 28px;
+}
+
+
+/* Section card */
+
+.management-card {
+    background-color: white;
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    border: 1px solid #e5dce5;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.10);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.management-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 10px 24px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Card header */
+
+.management-card-header {
+    padding: 20px 24px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgb(64, 0, 64),
+            rgb(128, 0, 0)
+        );
+
+    color: white;
+}
+
+.management-card-header h2 {
+    margin: 0;
+
+    font-size: 23px;
+}
+
+
+/* Card body */
+
+.management-card-body {
+    padding: 20px 24px;
+}
+
+
+/* Individual item */
+
+.management-item {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 15px 0;
+
+    border-bottom: 1px solid #eee;
+}
+
+.management-item:last-child {
+    border-bottom: none;
+}
+
+
+/* Item info */
+
+.management-item-info {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+.management-item-title {
+    font-size: 17px;
+
+    font-weight: bold;
+
+    color: rgb(64, 0, 64);
+}
+
+.management-item-details {
+    font-size: 13px;
+
+    color: #777;
+}
+
+
+/* Actions */
+
+.management-actions {
+    display: flex;
+
+    gap: 7px;
+
+    flex-shrink: 0;
+}
+
+.management-edit,
+.management-delete {
+    padding: 7px 11px;
+
+    border-radius: 6px;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: bold;
+}
+
+.management-edit {
+    background-color: #f0e3f0;
+
+    color: rgb(64, 0, 64);
+}
+
+.management-delete {
+    background-color: #ffe0e0;
+
+    color: #a11a1a;
+}
+
+.management-edit:hover {
+    background-color: #e2d0e2;
+}
+
+.management-delete:hover {
+    background-color: #ffcaca;
+}
+
+
+/* New button */
+
+.management-new {
+    display: block;
+
+    width: fit-content;
+
+    margin-top: 18px;
+
+    padding: 10px 15px;
+
+    border-radius: 7px;
+
+    background-color: rgb(128, 0, 0);
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.management-new:hover {
+    background-color: rgb(95, 0, 0);
+
+    transform: translateY(-2px);
+}
+
+
+/* Home */
+
+.management-home {
+    display: block;
+
+    width: fit-content;
+
+    margin: 35px auto 0 auto;
+
+    padding: 11px 20px;
+
+    border-radius: 8px;
+
+    background-color: rgb(64, 0, 64);
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: bold;
+}
+
+
+@media (max-width: 700px) {
+
+    .management-grid {
+        width: 95%;
+
+        grid-template-columns: 1fr;
+    }
+
+    .management-item {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .management-actions {
+        width: 100%;
+    }
+}
+
+/* =========================================
+   ADMIN / CREATE / EDIT PAGES
+   ========================================= */
+
+.admin-page {
+    min-height: 100vh;
+
+    padding: 45px 20px 70px 20px;
+
+    box-sizing: border-box;
+
+    background:
+        linear-gradient(
+            135deg,
+            #faf7fa 0%,
+            #f4eaf4 50%,
+            #fff8e7 100%
+        );
+}
+
+
+/* -----------------------------------------
+   ADMIN HEADER
+   ----------------------------------------- */
+
+.admin-header {
+    width: 90%;
+    max-width: 760px;
+
+    margin: 0 auto 30px auto;
+
+    text-align: center;
+}
+
+.admin-icon {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 65px;
+    height: 65px;
+
+    margin-bottom: 15px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgb(64, 0, 64),
+            rgb(128, 0, 0)
+        );
+
+    color: white;
+
+    font-size: 28px;
+
+    box-shadow:
+        0 6px 18px rgba(64, 0, 64, 0.25);
+}
+
+.admin-header h1 {
+    margin: 0;
+
+    color: rgb(64, 0, 64);
+
+    font-size: 34px;
+}
+
+.admin-header p {
+    margin: 10px 0 0 0;
+
+    color: #777;
+
+    font-size: 16px;
+}
+
+
+/* -----------------------------------------
+   ADMIN FORM CARD
+   ----------------------------------------- */
+
+.admin-form-card {
+    width: 90%;
+    max-width: 760px;
+
+    margin: 0 auto;
+
+    padding: 35px;
+
+    box-sizing: border-box;
+
+    background-color: white;
+
+    border-radius: 16px;
+
+    border: 1px solid #e5dce5;
+
+    box-shadow:
+        0 10px 30px rgba(64, 0, 64, 0.12);
+}
+
+
+/* -----------------------------------------
+   ADMIN FORM
+   ----------------------------------------- */
+
+.admin-form {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 21px;
+}
+
+
+/* -----------------------------------------
+   FORM GROUP
+   ----------------------------------------- */
+
+.admin-form-group {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+.admin-form-group label {
+    font-size: 13px;
+
+    font-weight: bold;
+
+    color: #4b4b4b;
+
+    letter-spacing: 0.4px;
+}
+
+
+/* -----------------------------------------
+   INPUTS
+   ----------------------------------------- */
+
+.admin-input,
+.admin-select {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 12px 14px;
+
+    border: 1px solid #d8d0d8;
+
+    border-radius: 8px;
+
+    background-color: #fcfbfc;
+
+    color: #333;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.admin-input::placeholder {
+    color: #aaa;
+}
+
+.admin-input:focus,
+.admin-select:focus {
+    border-color: rgb(128, 0, 0);
+
+    background-color: white;
+
+    box-shadow:
+        0 0 0 3px rgba(128, 0, 0, 0.10);
+}
+
+
+/* -----------------------------------------
+   TEXTAREA
+   ----------------------------------------- */
+
+.admin-textarea {
+    min-height: 130px;
+
+    resize: vertical;
+
+    line-height: 1.5;
+}
+
+
+/* -----------------------------------------
+   SELECT
+   ----------------------------------------- */
+
+.admin-select {
+    cursor: pointer;
+
+    appearance: auto;
+}
+
+
+/* -----------------------------------------
+   FORM HINT
+   ----------------------------------------- */
+
+.form-hint {
+    margin: 0;
+
+    font-size: 12px;
+
+    color: #999;
+}
+
+
+/* -----------------------------------------
+   FESTIVAL CHECKBOXES
+   ----------------------------------------- */
+
+.checkbox-group {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    padding: 15px;
+
+    border: 1px solid #e5dce5;
+
+    border-radius: 9px;
+
+    background-color: #faf7fa;
+}
+
+.checkbox-option {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 9px 11px;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    color: #444;
+
+    font-size: 14px;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.checkbox-option:hover {
+    background-color: #f0e3f0;
+
+    color: rgb(64, 0, 64);
+}
+
+.checkbox-option input {
+    width: 17px;
+    height: 17px;
+
+    accent-color: rgb(128, 0, 0);
+
+    cursor: pointer;
+}
+
+
+/* -----------------------------------------
+   BUTTONS
+   ----------------------------------------- */
+
+.admin-form-actions {
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 8px;
+}
+
+.admin-submit {
+    flex: 1;
+
+    padding: 13px 18px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgb(128, 0, 0),
+            rgb(105, 0, 50)
+        );
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 4px 10px rgba(128, 0, 0, 0.20);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.admin-submit:hover {
+    transform: translateY(-2px);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgb(160, 0, 0),
+            rgb(125, 0, 60)
+        );
+
+    box-shadow:
+        0 7px 16px rgba(128, 0, 0, 0.28);
+}
+
+.admin-submit:active {
+    transform: translateY(0);
+}
+
+
+/* -----------------------------------------
+   BACK BUTTON
+   ----------------------------------------- */
+
+.admin-back {
+    display: block;
+
+    width: 90%;
+    max-width: 760px;
+
+    margin: 20px auto 0 auto;
+
+    text-align: center;
+
+    color: rgb(64, 0, 64);
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    transition: color 0.2s ease;
+}
+
+.admin-back:hover {
+    color: rgb(128, 0, 0);
+
+    text-decoration: underline;
+}
+
+
+/* -----------------------------------------
+   VALIDATION
+   ----------------------------------------- */
+
+.admin-error {
+    padding: 12px 15px;
+
+    border-left: 5px solid #a11a1a;
+
+    border-radius: 7px;
+
+    background-color: #ffe5e5;
+
+    color: #8c1515;
+
+    font-size: 13px;
+}
+
+
+/* -----------------------------------------
+   RESPONSIVE
+   ----------------------------------------- */
+
+@media (max-width: 600px) {
+
+    .admin-page {
+        padding: 30px 15px 50px 15px;
+    }
+
+    .admin-header {
+        width: 95%;
+    }
+
+    .admin-header h1 {
+        font-size: 28px;
+    }
+
+    .admin-form-card {
+        width: 95%;
+
+        padding: 25px 20px;
+
+        border-radius: 13px;
+    }
+
+    .admin-form-actions {
+        flex-direction: column;
+    }
+
+    .admin-submit {
+        width: 100%;
+    }
+
+    .admin-back {
+        width: 95%;
+    }
+}
+

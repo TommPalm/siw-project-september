@@ -16,11 +16,11 @@ public class FestivalService {
 		this.repo = repo;
 	}
 	
-	@Transactional
-	public Optional<Festival> findById(Long id){
-		return repo.findById(id);
+	@Transactional(readOnly=true)
+	public Festival findById(Long id){
+		return repo.findById(id).orElse(null);
 	}
-	@Transactional
+	@Transactional(readOnly=true)
 	public List<Festival> findAll(){
 		return repo.findAll();
 	}
@@ -29,10 +29,14 @@ public class FestivalService {
 		return repo.save(fest);
 	}
 	@Transactional
+	public void delete(Festival fest) {
+		repo.delete(fest);
+	}
+	@Transactional(readOnly=true)
 	public List<Festival> findByName(String name){
 		return repo.findByName(name);
 	}
-	@Transactional
+	@Transactional(readOnly=true)
 	public List<Festival> findByCityAndYearOrderByStartDateEndDate(String city, int year){
 		return repo.findByCityAndYearOrderByStartingDate(city, year);
 	}

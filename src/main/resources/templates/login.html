@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="it"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+
+<body class="auth-page">
+
+    <!-- =========================
+         HEADER
+         ========================= -->
+
+    <header class="auth-header">
+
+        <div class="auth-logo">
+            🎬
+        </div>
+
+        <h1>
+            Area personale
+        </h1>
+
+        <p>
+            Accedi al tuo account
+        </p>
+
+    </header>
+
+
+    <!-- =========================
+         LOGIN CARD
+         ========================= -->
+
+    <main class="auth-card">
+
+        <h2 class="auth-card-title">
+            Bentornato!
+        </h2>
+
+        <p class="auth-card-subtitle">
+            Inserisci le tue credenziali per continuare.
+        </p>
+
+
+        <form class="auth-form"
+              th:action="@{/login}"
+              method="POST">
+
+            <!-- USERNAME -->
+
+            <div class="form-group">
+
+                <label for="username">
+                    Username
+                </label>
+
+                <input
+                    id="username"
+                    class="auth-input"
+                    name="username"
+                    type="text"
+                    required
+                    autocomplete="username"
+                    placeholder="Inserisci username"
+                />
+
+            </div>
+
+
+            <!-- PASSWORD -->
+
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    id="password"
+                    class="auth-input"
+                    name="password"
+                    type="password"
+                    required
+                    autocomplete="current-password"
+                    placeholder="Inserisci password"
+                />
+
+            </div>
+
+
+            <!-- BUTTON -->
+
+            <button
+                type="submit"
+                class="auth-button">
+
+                Accedi
+
+            </button>
+
+        </form>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+         ========================= -->
+
+    <footer class="auth-footer">
+
+        <p>
+            Non hai un account?
+            <a th:href="@{/register}">
+                Registrati
+            </a>
+        </p>
+
+        <p>
+            <a class="auth-home-link"
+               th:href="@{/}">
+                ← Torna alla home
+            </a>
+        </p>
+
+    </footer>
+
+</body>
+</html>

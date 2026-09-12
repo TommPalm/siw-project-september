@@ -16,11 +16,11 @@ public class FilmService {
 		this.repo = repo;
 	}
 	
-	@Transactional
-	public Optional<Film> findById(Long id){
-		return repo.findById(id);
+	@Transactional(readOnly=true)
+	public Film findById(Long id){
+		return repo.findById(id).orElse(null);
 	}
-	@Transactional
+	@Transactional(readOnly=true)
 	public List<Film> findAll(){
 		return repo.findAll();
 	}
@@ -28,23 +28,27 @@ public class FilmService {
 	public Film save(Film film) {
 		return repo.save(film);
 	}
-	@Transactional
+	@Transactional(readOnly=true)
 	public Film findByTitle(String title) {
 		return repo.findByTitle(title);
 	}
 	@Transactional
+	public void delete(Film film) {
+		repo.delete(film);
+	}
+	@Transactional(readOnly=true)
 	public List<Film> findByGenre(String genre){
 		return repo.findByGenre(genre);
 	}
-	@Transactional
+	@Transactional(readOnly=true)
 	public List<Film> findByDirector(String director){
 		return repo.findByDirector(director);
 	}
-	@Transactional
+	@Transactional(readOnly=true)
 	public List<Film> findByYear(int year){
 		return repo.findByYear(year);
 	}
-	@Transactional
+	@Transactional(readOnly=true)
 	public List<Film> findAllWithFestival(){
 		return repo.findAllWithFestival();
 	}

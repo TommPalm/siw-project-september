@@ -11,17 +11,13 @@ public class Recensione {
 	private Long id;
 	@Column(length=2000)
 	private String text;
-	private int vote;
+	private Integer vote;
 	private String date;
 	
 	@ManyToOne
 	private Utente user;
 	@ManyToOne
 	private Film film;
-	
-	public Recensione(Long id) {
-		this.id = id;
-	}
 
 	public Long getId() {
 		return id;
@@ -48,11 +44,11 @@ public class Recensione {
 		this.text = text;
 	}
 
-	public int getVote() {
+	public Integer getVote() {
 		return vote;
 	}
 
-	public void setVote(int vote) {
+	public void setVote(Integer vote) {
 		this.vote = vote;
 	}
 

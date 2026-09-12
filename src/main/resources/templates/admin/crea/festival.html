@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="it"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>Crea festival - Festival del Cinema</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+
+<body>
+
+<main class="admin-page">
+
+    <header class="admin-header">
+
+        <div class="admin-icon">
+            🎪
+        </div>
+
+        <h1>Nuovo festival</h1>
+
+        <p>
+            Crea un nuovo evento cinematografico.
+        </p>
+
+    </header>
+
+
+    <section class="admin-form-card">
+
+        <form class="admin-form"
+              th:action="@{/festival/nuovo}"
+              th:object="${fest}"
+              method="POST">
+
+
+            <div class="admin-form-group">
+
+                <label for="name">
+                    Nome del festival
+                </label>
+
+                <input
+                    id="name"
+                    class="admin-input"
+                    type="text"
+                    required
+                    th:field="*{name}"
+                    placeholder="Es. Festival del Cinema di Roma"
+                />
+
+            </div>
+
+
+            <div class="admin-form-group">
+
+                <label for="startingDate">
+                    📅 Data di inizio
+                </label>
+
+                <input
+                    id="startingDate"
+                    class="admin-input"
+                    type="text"
+                    required
+                    th:field="*{startingDate}"
+                    placeholder="Es. 15 settembre"
+                />
+
+            </div>
+
+
+            <div class="admin-form-group">
+
+                <label for="endingDate">
+                    📅 Data di fine
+                </label>
+
+                <input
+                    id="endingDate"
+                    class="admin-input"
+                    type="text"
+                    required
+                    th:field="*{endingDate}"
+                    placeholder="Es. 25 settembre"
+                />
+
+            </div>
+
+
+            <div class="admin-form-group">
+
+                <label for="year">
+                    Anno
+                </label>
+
+                <input
+                    id="year"
+                    class="admin-input"
+                    type="number"
+                    required
+                    th:field="*{year}"
+                    placeholder="Es. 2026"
+                />
+
+            </div>
+
+
+            <div class="admin-form-group">
+
+                <label for="city">
+                    📍 Città
+                </label>
+
+                <input
+                    id="city"
+                    class="admin-input"
+                    type="text"
+                    required
+                    th:field="*{city}"
+                    placeholder="Es. Roma"
+                />
+
+            </div>
+
+
+            <div class="admin-form-group">
+
+                <label for="description">
+                    Descrizione
+                </label>
+
+                <textarea
+                    id="description"
+                    class="admin-input admin-textarea"
+                    required
+                    th:field="*{description}"
+                    placeholder="Descrivi il festival..."></textarea>
+
+            </div>
+
+
+            <div class="admin-form-actions">
+
+                <button
+                    type="submit"
+                    class="admin-submit">
+
+                    💾 Salva festival
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+
+    <a class="admin-back"
+       th:href="@{/admin/gestione}">
+        ← Torna alla gestione
+    </a>
+
+</main>
+
+</body>
+</html>

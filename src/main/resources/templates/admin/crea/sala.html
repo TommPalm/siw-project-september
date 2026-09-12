@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="it"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>Crea sala - Festival del Cinema</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+
+<body>
+
+<main class="admin-page">
+
+    <header class="admin-header">
+
+        <div class="admin-icon">
+            🎭
+        </div>
+
+        <h1>Nuova sala</h1>
+
+        <p>
+            Aggiungi una nuova sala cinematografica al festival.
+        </p>
+
+    </header>
+
+
+    <section class="admin-form-card">
+
+        <form class="admin-form"
+              th:action="@{/sala/crea}"
+              th:object="${sala}"
+              method="POST">
+
+            <div class="admin-form-group">
+
+                <label for="name">
+                    Nome della sala
+                </label>
+
+                <input
+                    id="name"
+                    class="admin-input"
+                    type="text"
+                    required
+                    th:field="*{name}"
+                    placeholder="Es. Sala Grande"
+                />
+
+            </div>
+
+
+            <div class="admin-form-group">
+
+                <label for="address">
+                    Indirizzo
+                </label>
+
+                <input
+                    id="address"
+                    class="admin-input"
+                    type="text"
+                    required
+                    th:field="*{address}"
+                    placeholder="Es. Via Roma 10"
+                />
+
+            </div>
+
+
+            <div class="admin-form-group">
+
+                <label for="capacity">
+                    Capacità
+                </label>
+
+                <input
+                    id="capacity"
+                    class="admin-input"
+                    type="number"
+                    required
+                    min="1"
+                    th:field="*{capacity}"
+                    placeholder="Numero di posti"
+                />
+
+                <p class="form-hint">
+                    Inserisci il numero massimo di spettatori.
+                </p>
+
+            </div>
+
+
+            <div class="admin-form-actions">
+
+                <button
+                    type="submit"
+                    class="admin-submit">
+
+                    💾 Salva sala
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+
+    <a class="admin-back"
+       th:href="@{/admin/gestione}">
+        ← Torna alla gestione
+    </a>
+
+</main>
+
+</body>
+</html>

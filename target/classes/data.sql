@@ -2,9 +2,9 @@
 INSERT INTO utente (id, name, surname) VALUES (0, 'admin', 'admin') ON CONFLICT (id) DO NOTHING;
 INSERT INTO utente (id, name, surname) VALUES (1, 'jonny', 'test') ON CONFLICT (id) DO NOTHING;
 --REGISTA
-INSERT INTO regista (id, name,surname, country,birth) VALUES (0,'Henry','Horror','Usa','1/2/93') ON CONFLICT (id) DO NOTHING;
-INSERT INTO regista (id, name,surname, country,birth) VALUES (1,'Carlo','Comedy','Italy','5/11/03') ON CONFLICT (id) DO NOTHING;
-INSERT INTO regista (id, name,surname, country,birth) VALUES (2,'Anitha','Action','Uk','28/6/78') ON CONFLICT (id) DO NOTHING;
+INSERT INTO regista (id, name,surname, country,birth) VALUES (0,'Henry','Orrore','Usa','1/2/93') ON CONFLICT (id) DO NOTHING;
+INSERT INTO regista (id, name,surname, country,birth) VALUES (1,'Carlo','Commadia','Italy','5/11/03') ON CONFLICT (id) DO NOTHING;
+INSERT INTO regista (id, name,surname, country,birth) VALUES (2,'Anitha','Azione','Uk','28/6/78') ON CONFLICT (id) DO NOTHING;
 --SALE
 INSERT INTO sala (id, name, address, capacity) VALUES (0,'Absalom films','via Roma 13',50) ON CONFLICT (id) DO NOTHING;
 INSERT INTO sala (id, name, address, capacity) VALUES (1,'Cinetastic','via fausto coppi 27a',80) ON CONFLICT (id) DO NOTHING;
@@ -22,14 +22,14 @@ INSERT INTO festival (id, name, city, year, description, starting_date, ending_d
 INSERT INTO recensione (id, text, vote, date,user_id,film_id) VALUES (0,'bello, ma troppo mentale e poca azione',3,'3/11/2025',1,0) ON CONFLICT (id) DO NOTHING;
 INSERT INTO recensione (id, text, vote, date,user_id,film_id) VALUES (1,'solo jumpscare visti e stravisti, evitabile e dimenticabile',1,'4/11/2025',0,0) ON CONFLICT (id) DO NOTHING;
 INSERT INTO recensione (id, text, vote, date,user_id,film_id) VALUES (2,'mi ha fatto ricredere sul genere',4,'24/6/2019',1,1) ON CONFLICT (id) DO NOTHING;
-INSERT INTO recensione (id, text, vote, date,user_id,film_id) VALUES (3,'',4,'30/4/2026',0,2) ON CONFLICT (id) DO NOTHING;
+INSERT INTO recensione (id, text, vote, date,user_id,film_id) VALUES (3,'divertente e leggera',4,'30/4/2026',0,2) ON CONFLICT (id) DO NOTHING;
 INSERT INTO recensione (id, text, vote, date,user_id,film_id) VALUES (4,'esattamente quello che serviva alla scena action, Anitha non delude mai',5,'6/6/2006',1,4) ON CONFLICT (id) DO NOTHING;
 INSERT INTO recensione (id, text, vote, date,user_id,film_id) VALUES (5,'film onesto, non un capolavoro, ma fa passare due ore intrattenendo bene',3,'7/8/2014',0,4) ON CONFLICT (id) DO NOTHING;
 --PROIEZIONI
 INSERT INTO proiezione (id, date, time, state, festival_id, room_id, film_id) VALUES (0,'11 set','19:50','COMPLETED',0,0,0) ON CONFLICT (id) DO NOTHING;
 INSERT INTO proiezione (id, date, time, state, festival_id, room_id, film_id) VALUES (1,'18 set','22:00','SCHEDULED',1,1,0) ON CONFLICT (id) DO NOTHING;
 INSERT INTO proiezione (id, date, time, state, festival_id, room_id, film_id) VALUES (2,'21 set','20:25','SCHEDULED',1,2,0) ON CONFLICT (id) DO NOTHING;
-INSERT INTO proiezione (id, date, time, state, festival_id, room_id, film_id) VALUES (3,'13 sett','16:45','COMPLETED',0,0,1) ON CONFLICT (id) DO NOTHING;
+INSERT INTO proiezione (id, date, time, state, festival_id, room_id, film_id) VALUES (3,'13 set','16:45','COMPLETED',0,0,1) ON CONFLICT (id) DO NOTHING;
 INSERT INTO proiezione (id, date, time, state, festival_id, room_id, film_id) VALUES (4,'10 ott','21:30','CANCELLED',0,0,1) ON CONFLICT (id) DO NOTHING;
 INSERT INTO proiezione (id, date, time, state, festival_id, room_id, film_id) VALUES (5,'20 set','23:00','SCHEDULED',1,1,1) ON CONFLICT (id) DO NOTHING;
 INSERT INTO proiezione (id, date, time, state, festival_id, room_id, film_id) VALUES (6,'30 lug','10:30','COMPLETED',1,2,2) ON CONFLICT (id) DO NOTHING;
@@ -54,8 +54,8 @@ INSERT INTO film_festival (film_id,festival_id) VALUES (2,1);
 INSERT INTO film_festival (film_id,festival_id) VALUES (3,1);
 INSERT INTO film_festival (film_id,festival_id) VALUES (4,1);
 --CREDENZIALI
-INSERT INTO credenziali (id, username, password, role, user_id) VALUES (0, 'kylix', '$2a$12$nyfe3EpguXvYduWqt46YbuzkNvgPAelIboSi2WT.DXE0OL7XWSI.G', 'ADMIN', 0) ON CONFLICT (id) DO NOTHING;
-
+INSERT INTO credenziali (id, username, password, user_role, user_id) VALUES (0, 'kylix', '$2a$12$nyfe3EpguXvYduWqt46YbuzkNvgPAelIboSi2WT.DXE0OL7XWSI.G', 'ADMIN', 0) ON CONFLICT (id) DO NOTHING;
+INSERT INTO credenziali (id, username, password, user_role, user_id) VALUES (1, 'test', '$2a$12$nyfe3EpguXvYduWqt46YbuzkNvgPAelIboSi2WT.DXE0OL7XWSI.G', 'USER', 1) ON CONFLICT (id) DO NOTHING;
 
 
 SELECT setval('utente_seq', GREATEST(COALESCE((SELECT MAX(id) FROM utente), 0) + 1, 20), false);

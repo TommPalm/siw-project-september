@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="it"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>Modifica Sala</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+
+<body>
+
+<div class="admin-page">
+
+    <div class="admin-header">
+        <h1>🎬 Modifica sala</h1>
+        <p>Modifica le informazioni della sala cinematografica</p>
+    </div>
+
+    <form class="admin-form"
+          th:action="@{/sala/mod}"
+          th:object="${sala}"
+          method="POST">
+
+        <input type="hidden" th:field="*{id}">
+
+        <div class="admin-form-group">
+            <label for="name">Nome</label>
+
+            <input
+                id="name"
+                class="admin-input"
+                type="text"
+                required
+                th:field="*{name}"
+                placeholder="Nome della sala"
+            />
+        </div>
+
+        <div class="admin-form-group">
+            <label for="address">Indirizzo</label>
+
+            <input
+                id="address"
+                class="admin-input"
+                type="text"
+                required
+                th:field="*{address}"
+                placeholder="Indirizzo della sala"
+            />
+        </div>
+
+        <div class="admin-form-group">
+            <label for="capacity">Capacità</label>
+
+            <input
+                id="capacity"
+                class="admin-input"
+                type="number"
+                required
+                th:field="*{capacity}"
+                placeholder="Numero di posti"
+            />
+        </div>
+
+        <button type="submit" class="admin-submit">
+            Salva modifiche
+        </button>
+
+    </form>
+
+    <a class="admin-back" th:href="@{/admin/gestione}">
+        ← Torna alla gestione
+    </a>
+
+</div>
+
+</body>
+</html>

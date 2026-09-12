@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="it"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>Gestione - Festival del Cinema</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+
+<body>
+
+<div class="management-page">
+
+    <div class="management-header">
+
+        <h1>🎬 Gestione del cinema</h1>
+
+        <p>
+            Gestisci festival, film, registi, sale e proiezioni.
+        </p>
+
+    </div>
+
+
+    <div class="management-grid">
+
+
+        <!-- FESTIVAL -->
+
+        <section class="management-card">
+
+            <div class="management-card-header">
+                <h2>🏆 Festival</h2>
+            </div>
+
+            <div class="management-card-body">
+
+                <div th:if="${not #lists.isEmpty(festivals)}">
+
+                    <article
+                        class="management-item"
+                        th:each="fest : ${festivals}">
+
+                        <div class="management-item-info">
+
+                            <span
+                                class="management-item-title"
+                                th:text="${fest.name}">
+                            </span>
+
+                            <span
+                                class="management-item-details"
+                                th:text="${fest.city + ' · ' + fest.year}">
+                            </span>
+
+                            <span
+                                class="management-item-details"
+                                th:text="${fest.startingDate + ' - ' + fest.endingDate}">
+                            </span>
+
+                        </div>
+
+                        <div class="management-actions">
+
+                            <a
+                                class="management-edit"
+                                th:href="@{/admin/festival/{id}/mod(id=${fest.id})}">
+                                Modifica
+                            </a>
+
+                            <a
+                                class="management-delete"
+                                th:href="@{/admin/festival/{id}/canc(id=${fest.id})}">
+                                Elimina
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+                <a
+                    class="management-new"
+                    th:href="@{/admin/festival/crea}">
+                    + Nuovo festival
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- FILM -->
+
+        <section class="management-card">
+
+            <div class="management-card-header">
+                <h2>🎬 Film</h2>
+            </div>
+
+            <div class="management-card-body">
+
+                <div th:if="${not #lists.isEmpty(films)}">
+
+                    <article
+                        class="management-item"
+                        th:each="film : ${films}">
+
+                        <div class="management-item-info">
+
+                            <span
+                                class="management-item-title"
+                                th:text="${film.title}">
+                            </span>
+
+                            <span
+                                class="management-item-details"
+                                th:text="${film.genre + ' · ' + film.year}">
+                            </span>
+
+                            <span
+                                class="management-item-details"
+                                th:text="${film.country + ' · ' + film.length}">
+                            </span>
+
+                        </div>
+
+                        <div class="management-actions">
+
+                            <a
+                                class="management-edit"
+                                th:href="@{/admin/film/{id}/mod(id=${film.id})}">
+                                Modifica
+                            </a>
+
+                            <a
+                                class="management-delete"
+                                th:href="@{/admin/film/{id}/canc(id=${film.id})}">
+                                Elimina
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+                <a
+                    class="management-new"
+                    th:href="@{/admin/film/crea}">
+                    + Nuovo film
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- REGISTI -->
+
+        <section class="management-card">
+
+            <div class="management-card-header">
+                <h2>🎥 Registi</h2>
+            </div>
+
+            <div class="management-card-body">
+
+                <div th:if="${not #lists.isEmpty(directors)}">
+
+                    <article
+                        class="management-item"
+                        th:each="dir : ${directors}">
+
+                        <div class="management-item-info">
+
+                            <span
+                                class="management-item-title"
+                                th:text="${dir.name + ' ' + dir.surname}">
+                            </span>
+
+                            <span
+                                class="management-item-details"
+                                th:text="${dir.country + ' · ' + dir.birth}">
+                            </span>
+
+                        </div>
+
+                        <div class="management-actions">
+
+                            <a
+                                class="management-edit"
+                                th:href="@{/admin/regista/{id}/mod(id=${dir.id})}">
+                                Modifica
+                            </a>
+
+                            <a
+                                class="management-delete"
+                                th:href="@{/admin/regista/{id}/canc(id=${dir.id})}">
+                                Elimina
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+                <a
+                    class="management-new"
+                    th:href="@{/admin/regista/crea}">
+                    + Nuovo regista
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- SALE -->
+
+        <section class="management-card">
+
+            <div class="management-card-header">
+                <h2>🏛️ Sale</h2>
+            </div>
+
+            <div class="management-card-body">
+
+                <div th:if="${not #lists.isEmpty(rooms)}">
+
+                    <article
+                        class="management-item"
+                        th:each="r : ${rooms}">
+
+                        <div class="management-item-info">
+
+                            <span
+                                class="management-item-title"
+                                th:text="${r.name}">
+                            </span>
+
+                            <span
+                                class="management-item-details"
+                                th:text="${r.address}">
+                            </span>
+
+                            <span
+                                class="management-item-details"
+                                th:text="${'Capacità: ' + r.capacity}">
+                            </span>
+
+                        </div>
+
+                        <div class="management-actions">
+
+                            <a
+                                class="management-edit"
+                                th:href="@{/admin/sala/{id}/mod(id=${r.id})}">
+                                Modifica
+                            </a>
+
+                            <a
+                                class="management-delete"
+                                th:href="@{/admin/sala/{id}/canc(id=${r.id})}">
+                                Elimina
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+                <a
+                    class="management-new"
+                    th:href="@{/admin/sala/crea}">
+                    + Nuova sala
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROIEZIONI -->
+
+        <section class="management-card">
+
+            <div class="management-card-header">
+                <h2>🎞️ Proiezioni</h2>
+            </div>
+
+            <div class="management-card-body">
+
+                <div th:if="${not #lists.isEmpty(proiezioni)}">
+
+                    <article
+                        class="management-item"
+                        th:each="pro : ${proiezioni}">
+
+                        <div class="management-item-info">
+
+                            <span
+                                class="management-item-title"
+                                th:text="${pro.film.title}">
+                            </span>
+
+                            <span
+                                class="management-item-details"
+                                th:text="${pro.festival.name}">
+                            </span>
+
+                            <span
+                                class="management-item-details"
+                                th:text="${pro.date + ' · ' + pro.time + ' · ' + pro.state}">
+                            </span>
+
+                        </div>
+
+                        <div class="management-actions">
+
+                            <a
+                                class="management-edit"
+                                th:href="@{/admin/proiezione/{id}/mod(id=${pro.id})}">
+                                Modifica
+                            </a>
+
+                            <a
+                                class="management-delete"
+                                th:href="@{/admin/proiezione/{id}/canc(id=${pro.id})}">
+                                Elimina
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+                <a
+                    class="management-new"
+                    th:href="@{/admin/proiezione/crea}">
+                    + Nuova proiezione
+                </a>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <a
+        class="management-home"
+        th:href="@{/}">
+        ← Torna alla Home
+    </a>
+
+</div>
+
+</body>
+</html>

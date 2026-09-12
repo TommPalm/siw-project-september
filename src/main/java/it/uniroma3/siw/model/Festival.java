@@ -27,7 +27,7 @@ public class Festival {
 	@OneToMany(mappedBy = "festival", cascade=CascadeType.ALL)
 	private List<Proiezione> projections;
 	@ManyToMany(mappedBy= "festivals")
-	private List<Film> films;
+	private Set<Film> films = new HashSet<>();
 	
 	public Long getId() {
 		return id;
@@ -77,10 +77,10 @@ public class Festival {
 	public void setProjections(List<Proiezione> projections) {
 		this.projections = projections;
 	}
-	public List<Film> getFilms() {
+	public Set<Film> getFilms() {
 		return films;
 	}
-	public void setFilms(List<Film> films) {
+	public void setFilms(Set<Film> films) {
 		this.films = films;
 	}
 	@Override

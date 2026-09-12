@@ -16,7 +16,7 @@ public class Credenziali {
 	@NotBlank
 	@Column(unique=true)
 	private String username;
-	private String role; // ADMIN, USER
+	private String user_role; // ADMIN, USER
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private Utente user;
@@ -47,10 +47,10 @@ public class Credenziali {
 		this.username = username;
 	}
 	public String getRole() {
-		return role;
+		return user_role;
 	}
 	public void setRole(String role) {
-		this.role = role;
+		this.user_role = role;
 	}
 	@Override
 	public int hashCode() {

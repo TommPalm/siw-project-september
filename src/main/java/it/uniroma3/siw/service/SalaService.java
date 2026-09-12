@@ -15,24 +15,29 @@ public class SalaService {
 		this.repo = repo;
 	}
 	
+	
 	@Transactional
+	public void delete(Sala sala) {
+		repo.delete(sala);
+	}
+	@Transactional(readOnly=true)
 	public List<Sala> findAll(){
 		return repo.findAll();
 	}
-	@Transactional
-	public Optional<Sala> findById(Long id){
-		return repo.findById(id);
+	@Transactional(readOnly=true)
+	public Sala findById(Long id){
+		return repo.findById(id).orElse(null);
 	}
 	@Transactional
 	public Sala save(Sala sala) {
 		return repo.save(sala);
 	}
 	
-	@Transactional
+	@Transactional(readOnly=true)
 	public List<Sala> findByAddress(String address){
 		return repo.findByAddress(address);
 	}
-	@Transactional
+	@Transactional(readOnly=true)
 	public List<Sala> findByName(String name){
 		return repo.findByName(name);
 	}

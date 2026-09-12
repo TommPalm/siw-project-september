@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="it"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>Modifica recensione</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+
+<body>
+
+<main class="auth-page">
+
+    <div class="auth-header">
+        <div class="auth-logo">
+            ⭐
+        </div>
+
+        <h1>Modifica recensione</h1>
+
+        <p>Modifica la tua opinione sul film</p>
+    </div>
+
+
+    <div class="auth-card">
+
+        <h2 class="auth-card-title">
+            Modifica recensione
+        </h2>
+
+        <p class="auth-card-subtitle"
+           th:text="'Recensione per: ' + ${film.title}">
+        </p>
+
+
+        <form class="auth-form"
+              th:action="@{/recensione}"
+              th:object="${recensione}"
+              method="post">
+
+            <!-- ID RECENSIONE -->
+            <input type="hidden" th:field="*{id}">
+
+
+            <!-- FILM -->
+
+            <div class="form-group">
+
+                <label for="film">
+                    Film
+                </label>
+
+				<div class="form-group">
+
+				    <label for="film">
+				        Film
+				    </label>
+
+				    <select
+				        id="film"
+				        name="filmId"
+				        class="auth-input"
+				        required>
+
+				        <option
+				            th:each="f : ${films}"
+				            th:value="${f.id}"
+				            th:text="${f.title}"
+				            th:selected="${f.id == film.id}">
+				        </option>
+
+				    </select>
+
+				    <p
+				        th:if="${filmError}"
+				        th:text="${filmError}"
+				        class="error-message">
+				    </p>
+
+				</div>
+
+
+            </div>
+
+
+            <!-- VOTO -->
+
+            <div class="form-group">
+
+                <label for="vote">
+                    Voto
+                </label>
+
+                <select
+                    id="vote"
+                    class="auth-input"
+                    th:field="*{vote}"
+                    required>
+
+                    <option value="" disabled>
+                        Seleziona un voto
+                    </option>
+
+                    <option value="1">
+                        ⭐ 1 / 5
+                    </option>
+
+                    <option value="2">
+                        ⭐ 2 / 5
+                    </option>
+
+                    <option value="3">
+                        ⭐ 3 / 5
+                    </option>
+
+                    <option value="4">
+                        ⭐ 4 / 5
+                    </option>
+
+                    <option value="5">
+                        ⭐ 5 / 5
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- TESTO RECENSIONE -->
+
+            <div class="form-group">
+
+                <label for="text">
+                    La tua recensione
+                </label>
+
+                <textarea
+                    id="text"
+                    class="auth-input"
+                    th:field="*{text}"
+                    rows="8"
+                    maxlength="2000"
+                    placeholder="Scrivi qui la tua recensione..."
+                    required></textarea>
+
+            </div>
+
+
+            <!-- SUBMIT -->
+
+            <button
+                type="submit"
+                class="auth-button">
+
+                Salva modifiche
+
+            </button>
+
+        </form>
+
+    </div>
+
+</main>
+
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="it"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	<head>
+		<title>Festival</title>
+		<link rel="stylesheet" th:href="@{/css/style.css}"/>
+	</head>
+	<body>
+		<div class="titolo">
+			<img id="sfondo" th:src="@{/images/festival.jpg}" />
+			<strong id="festival" th:text="${festival.name}"></strong>
+			<h1 id="quando">
+				<strong th:text="${festival.startingDate}"></strong>
+				<strong>-</strong>
+				<strong th:text="${festival.endingDate}"></strong>
+			</h1>
+		</div>
+		
+		<!-- FILMS -->
+		<section class="festival-section">
+		    <h2 class="section-title">FILM PARTECIPANTI</h2>
+
+		    <p class="empty-message" th:if="${#lists.isEmpty(films)}">
+		        Spiacenti, non sono ancora disponibili film.
+		    </p>
+
+		    <div class="film-list" th:if="${not #lists.isEmpty(films)}">
+		        <div class="film-card" th:each="film : ${films}">
+		            <div class="film-info">
+		                <span class="film-title" th:text="${film.title}"></span>
+		                <span class="film-details">
+		                    <span th:text="${film.year}"></span>
+		                    <span>•</span>
+		                    <span th:text="${film.genre}"></span>
+		                    <span>•</span>
+		                    <span th:text="${film.country}"></span>
+		                </span>
+		            </div>
+
+		            <a class="film-link"
+		               th:href="@{/film/{id}/info/registered(id=${film.id})}">
+		                Vedi info →
+		            </a>
+		        </div>
+		    </div>
+		</section>
+
+
+		<!-- PROIEZIONI -->
+		<section class="festival-section projections-section">
+		    <h2 class="section-title">PROGRAMMA PROIEZIONI</h2>
+
+		    <p class="empty-message" th:if="${#lists.isEmpty(proiezioni)}">
+		        Spiacenti, non ci sono proiezioni in programma.
+		    </p>
+
+		    <div class="projection-list" th:if="${not #lists.isEmpty(proiezioni)}">
+
+		        <div class="projection-card" th:each="pro : ${proiezioni}">
+
+		            <div class="projection-main">
+		                <div class="projection-film"
+		                     th:text="${pro.film.title}">
+		                </div>
+
+		                <div class="projection-datetime">
+		                    <span class="projection-date"
+		                          th:text="${pro.date}">
+		                    </span>
+
+		                    <span class="projection-separator">•</span>
+
+		                    <span class="projection-time"
+		                          th:text="${pro.time}">
+		                    </span>
+		                </div>
+		            </div>
+
+		            <div class="projection-room">
+		                <span class="room-label">SALA</span>
+		                <span class="room-name"
+		                      th:text="${pro.room.name}">
+		                </span>
+		                <span class="room-address"
+		                      th:text="${pro.room.address}">
+		                </span>
+		            </div>
+
+		            <span class="projection-state"
+		                  th:classappend="' state-' + ${#strings.toLowerCase(pro.state)}"
+		                  th:text="${pro.state}">
+		            </span>
+
+		        </div>
+		    </div>
+		</section>
+
+	</body>
+	
+</html>

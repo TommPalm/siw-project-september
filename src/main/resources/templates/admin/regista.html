@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="it"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>Modifica Regista</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+
+<body>
+
+<div class="admin-page">
+
+    <div class="admin-header">
+        <h1>🎥 Modifica regista</h1>
+        <p>Modifica le informazioni del regista</p>
+    </div>
+
+    <form class="admin-form"
+          th:action="@{/regista/mod}"
+          th:object="${regista}"
+          method="POST">
+
+        <input type="hidden" th:field="*{id}">
+
+        <div class="admin-form-group">
+            <label for="name">Nome</label>
+
+            <input
+                id="name"
+                class="admin-input"
+                type="text"
+                required
+                th:field="*{name}"
+                placeholder="Nome"
+            />
+        </div>
+
+        <div class="admin-form-group">
+            <label for="surname">Cognome</label>
+
+            <input
+                id="surname"
+                class="admin-input"
+                type="text"
+                required
+                th:field="*{surname}"
+                placeholder="Cognome"
+            />
+        </div>
+
+        <div class="admin-form-group">
+            <label for="country">Paese</label>
+
+            <input
+                id="country"
+                class="admin-input"
+                type="text"
+                required
+                th:field="*{country}"
+                placeholder="Paese di nascita"
+            />
+        </div>
+
+        <div class="admin-form-group">
+            <label for="birth">Data di nascita</label>
+
+            <input
+                id="birth"
+                class="admin-input"
+                type="text"
+                required
+                th:field="*{birth}"
+                placeholder="Data di nascita"
+            />
+        </div>
+
+        <button type="submit" class="admin-submit">
+            Salva modifiche
+        </button>
+
+    </form>
+
+    <a class="admin-back" th:href="@{/admin/gestione}">
+        ← Torna alla gestione
+    </a>
+
+</div>
+
+</body>
+</html>

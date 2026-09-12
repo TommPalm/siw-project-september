@@ -29,6 +29,9 @@ public class Film {
 	private Regista director;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="film")
 	private List<Recensione> reviews;
+	
+	
+	
 	public Long getId() {
 		return id;
 	}
