@@ -24,9 +24,9 @@ public class Festival {
 	@Column(nullable=false)
 	private String endingDate;
 	
-	@OneToMany(mappedBy = "festival", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy = "festival", cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Proiezione> projections;
-	@ManyToMany(mappedBy= "festivals")
+	@ManyToMany(mappedBy= "festivals", fetch = FetchType.EAGER)
 	private Set<Film> films = new HashSet<>();
 	
 	public Long getId() {

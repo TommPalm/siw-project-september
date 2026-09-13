@@ -63,7 +63,7 @@ public class SecurityConfig {
         httpSecurity.authorizeHttpRequests(authorize -> {
 
             authorize.requestMatchers(
-                    "/","/images/**","/css/**","/festival/{id}/info","/film/{id}/info","/regista/{id}/info"
+                    "/","/images/**","/css/**","/festival/{id}/info","/film/{id}/info","/regista/{id}/info","/register"
             ).permitAll();
 
             authorize.requestMatchers("/admin/**")

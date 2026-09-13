@@ -1,69 +1,65 @@
 <!DOCTYPE html>
-<htmlhtml lang="it"
+<html lang="it"
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>recensioni</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <title>Le tue recensioni</title>
+
+    <link rel="stylesheet"
+          th:href="@{/css/style.css}">
+
+		  <meta name="_csrf" th:content="${_csrf.token}">
+		  <meta name="_csrf_header" th:content="${_csrf.headerName}">
+
 </head>
 
 <body>
-	<p class="empty-message"
-	   th:if="${#lists.isEmpty(reviews)}">
 
-	    Non ci sono ancora recensioni a tuo nome.
+    <div id="root"></div>
 
-	</p>
+	<input type="hidden" th:field="*{id}">
+    <!-- React -->
+    <script
+        src="https://unpkg.com/react@18/umd/react.development.js">
+    </script>
+
+    <script
+        src="https://unpkg.com/react-dom@18/umd/react-dom.development.js">
+    </script>
+
+    <!-- Babel -->
+    <script
+        src="https://unpkg.com/@babel/standalone/babel.min.js">
+    </script>
 
 
-	<div class="review-list"
-	     th:if="${not #lists.isEmpty(reviews)}">
+    <!-- Recensione React component -->
+    <script
+        type="text/babel"
+        th:src="@{/js/Recensione.jsx}">
+    </script>
 
-	    <article class="review-card"
-	             th:each="rev : ${reviews}">
 
-	        <div class="review-header">
+    <!-- Start React -->
+    <script type="text/babel" th:inline="javascript">
 
-	            <span class="review-date"
-	                  th:text="${rev.date}">
-	            </span>
+        const userId = /*[[${userId}]]*/ 0;
 
-	            <span class="review-date"
-	                  th:text="${rev.film.title}">
-	            </span>
+        const root = ReactDOM.createRoot(
+            document.getElementById("root")
+        );
 
-	            <div class="review-actions">
+        root.render(
+            <Recensione userId={userId} />
+        );
 
-	                <span class="review-vote">
-	                    ⭐
-	                    <span th:text="${rev.vote}"></span>
-	                    /5
-	                </span>
-
-	                <a class="film-link"
-	                   th:href="@{/recensione/{id}/mod(id=${rev.id})}">
-	                    modifica
-	                </a>
-
-					<a class="film-link"
-					   th:href="@{/recensione/{id}/canc(id=${rev.id})}">
-					   elimina
-					</a>
-	            </div>
-
-	        </div>
-
-	        <p class="review-text"
-	           th:text="${rev.text}">
-	        </p>
-
-	    </article>
-
-	</div>
+    </script>
 
 </body>
 

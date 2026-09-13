@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="it"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Nuova recensione</title>
+
+    <link rel="stylesheet"
+          th:href="@{/css/style.css}">
+
+</head>
+
+<body>
+
+    <h1>Scrivi una recensione</h1>
+
+    <form th:action="@{/recensione/nuova}"
+          th:object="${recensione}"
+          method="post">
+
+        <div>
+
+            <label for="film">
+                Film
+            </label>
+
+            <select id="film"
+                    name="filmId"
+                    required>
+
+                <option value="">
+                    -- Seleziona un film --
+                </option>
+
+                <option th:each="film : ${films}"
+                        th:value="${film.id}"
+                        th:text="${film.title}">
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div>
+
+            <label for="vote">
+                Voto
+            </label>
+
+            <select id="vote"
+                    th:field="*{vote}"
+                    required>
+
+                <option value="">
+                    -- Seleziona un voto --
+                </option>
+
+                <option value="1">1/5</option>
+                <option value="2">2/5</option>
+                <option value="3">3/5</option>
+                <option value="4">4/5</option>
+                <option value="5">5/5</option>
+
+            </select>
+
+        </div>
+
+
+        <div>
+
+            <label for="text">
+                Recensione
+            </label>
+
+            <textarea id="text"
+                      th:field="*{text}"
+                      maxlength="2000"
+                      required>
+            </textarea>
+
+        </div>
+
+
+        <p th:if="${filmError}"
+           th:text="${filmError}">
+        </p>
+
+        <p th:if="${reviewError}"
+           th:text="${reviewError}">
+        </p>
+
+
+        <button type="submit">
+            Pubblica recensione
+        </button>
+
+        <a th:href="@{/registered/home}">
+            Annulla
+        </a>
+
+    </form>
+
+</body>
+
+</html>

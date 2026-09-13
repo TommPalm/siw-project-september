@@ -44,6 +44,23 @@ public class RecensioneService {
 		repo.deleteById(id);
 	}
 
+	@Transactional
+	public Recensione updateRecensione(
+	        Long recensioneId,
+	        Integer vote,
+	        String text) {
+
+	    Recensione recensione = findById(recensioneId);
+
+	    if (recensione == null) {
+	        return null;
+	    }
+
+	    recensione.setVote(vote);
+	    recensione.setText(text);
+
+	    return save(recensione);
+	}
 
 
 }

@@ -5,5 +5,4 @@ import it.uniroma3.siw.model.*;
 
 public interface UtenteRepository extends JpaRepository<Utente, Long> {
 
-	
 }

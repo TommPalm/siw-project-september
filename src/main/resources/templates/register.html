@@ -77,13 +77,13 @@
                     class="auth-input"
                     type="text"
                     required
-                    th:field="${user.nome}"
+                    th:field="${user.name}"
                     placeholder="Inserisci il tuo nome"
                 />
 
                 <span
-                    th:if="${#fields.hasErrors('user.nome')}"
-                    th:errors="${user.nome}"
+                    th:if="${#fields.hasErrors('user.name')}"
+                    th:errors="${user.name}"
                     class="field-error">
                 </span>
 
